@@ -1,31 +1,26 @@
-# Basic React Starter
+## User Stories:
+Discovery Journey:
+As a user, I want to use Hidden Murals NYC to explore different neighborhoods in New York City, uncovering hidden murals, and adding new discoveries to contribute to the app's community.
+Artist Recognition:
+As a user, I want mural artists to share their work on Hidden Murals NYC, allowing me to learn about their creations and the stories behind each mural.
+Tourist Exploration:
+As a user, I wish to use the app to go beyond typical tourist attractions when visiting NYC. I want to discover and document unique murals that provide a more authentic and local experience.
+Community Engagement:
+As a user, I am interested in actively contributing to Hidden Murals NYC. I want to add information about murals, leave comments, and engage with others in the community to enhance the app's content.
+Photography Enthusiast:
+As a user that loves to take photos, I want to use Hidden Murals NYC to discover the locations of hidden murals I have not seen before. I want to take photos of these artworks and share my photography with the community, contributing my unique perspective to the appreciation of street art in New York City.
 
-You can use this starter to create any ReactJS app you would like.
-Unlike when you use `npm create vite@latest your-app-name -- --template react`,
+### Personas:
+Art Explorer - Maya:
+Characteristics:
+NYC local
+Enjoys neighborhood walks
+Interested in discovering and contributing to street art culture
+Uses the app for personal exploration and community engagement
+Tourist Adventurer - Carlos:
+Characteristics:
+Visiting NYC for a short period
+Seeks unique and authentic experiences
+Uses the app to discover hidden gems not commonly found in tourist guides
+Leaves comments to share experiences with others
 
-This repo has removed all of the unwanted starter code that is normally included when using `npm` to create an application.
-
-## Getting started
-
-- `clone` this application
-- change the name of this directory to a name that refers to your current project. Don't just leave it as `react-basic-starter`
-  _Hint:_ In the terminal, type `mv react-basic-starter new-name-of-your-app`
-- `cd` into the app
-- in the terminal run `git remote remove origin` in order to remove any connection to this Github folder.
-
-- run `npm install`
-- to start the project, run `npm run dev`
-- no navigate to `localhost:3000` and you will see the app
-- Now you are ready to code
-
-If you would like to connect this afterwards to your personal Github then:
-
-- go to your Github account in the browser
-- create a new repo and give it a name
-- make sure the repo is public and click `Create Repository`
-- copy the instructions under the title `…or push an existing repository from the command line`
-- paste the commands in your terminal
-
-You have now connected your project to the repo.
-
-**You have the ability to clone this repo over and over to create your own projects. Just remember to change the name of the folder so that you do not have duplicates**
