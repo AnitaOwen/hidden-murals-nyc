@@ -23,12 +23,20 @@ function App () {
   }, []);
   return 
   <>
-  {/* <Home /> */}
-  <MuralList allMurals={allMurals} />
-  {/* <MuralInfo/> */}
-  {/* <ArtistInfo /> */}
-  {/* <Aside/> */}
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+
+    <Route path="/murals">
+        <Route index element={<MuralList allMurals={allMurals} />} />
+        <Route path=":id" element={<MuralList />} />
+      </Route>
+
+      <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
+
+  </Routes>
   {/* <Footer /> */}
+  {/* <ArtistInfo /> */}
   </>
 };
 
