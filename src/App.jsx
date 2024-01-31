@@ -1,20 +1,28 @@
+import { Route, Routes, useParams } from "react-router-dom";
 import { useEffect } from "react";
 // import Home from "./components/Home";
 import MuralList from "./components/MuralList";
 // import MuralInfo from "./components/MuralInfo";
 // import ArtistInfo from "./components/ArtistInfo";
-// import Aside from "./components/Aside";
+import Aside from "./components/Aside";
 import { getAllMurals} from "./api/fetch"
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+
 import "./App.css"
 import About from "./components/About";
 
 
 
 
+
 function App () {
   const [allMurals, setAllMurals] = useState ([])
+  const { borough } = useParams();
+  const [selectedBorough, setSelectedBorough] = useState(borough)
+
+  function handleOnClick(borough){
+    setSelectedBorough(borough)
+  }
 
   useEffect(() => {
     getAllMurals()
@@ -28,7 +36,10 @@ function App () {
   }, []);
   return (
   <>
+  <Aside allMurals={allMurals} handleOnClick={handleOnClick} />
+
   <Routes>
+
     {/* <Route path="/" element={<Home />} /> */}
     <Route path="/about" element={<About />} />
 

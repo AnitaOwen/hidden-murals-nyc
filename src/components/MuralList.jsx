@@ -3,11 +3,11 @@ import Mural from './Mural'
 
 const MuralList = ({allMurals}) => {
   return (
-    <div>
+    <main>
       {allMurals.map((mural) => (
        <Mural key={mural.id} mural={mural}/>
       ))}
-    </div>
+    </main>
   )
 }
 
