@@ -8,6 +8,12 @@ import Aside from "./components/Aside";
 import { getAllMurals} from "./api/fetch"
 import { useState } from "react";
 
+import "./App.css"
+import About from "./components/About";
+
+
+
+
 
 function App () {
   const [allMurals, setAllMurals] = useState ([])
@@ -33,8 +39,10 @@ function App () {
   <Aside allMurals={allMurals} handleOnClick={handleOnClick} />
 
   <Routes>
-    {/* <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} /> */}
+
+    {/* <Route path="/" element={<Home />} /> */}
+    <Route path="/about" element={<About />} />
+
     <Route path="/murals">
         <Route index element={<MuralList allMurals={allMurals} />} />
         <Route path=":id" element={<MuralList />} />

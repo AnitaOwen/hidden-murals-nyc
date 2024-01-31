@@ -1,8 +1,11 @@
 import React from 'react'
+import PhotoGrid from './PhotoGrid'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>Home
+      <PhotoGrid/>
+    </div>
   )
 }
 
