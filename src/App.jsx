@@ -1,18 +1,14 @@
 import { Route, Routes, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import Home from "./components/Home";
 import MuralList from "./components/MuralList";
-// import MuralInfo from "./components/MuralInfo";
+import MuralInfo from "./components/MuralInfo";
 // import ArtistInfo from "./components/ArtistInfo";
 import Aside from "./components/Aside";
 import { getAllMurals} from "./api/fetch"
-import { useState } from "react";
 
 import "./App.css"
 import About from "./components/About";
-
-
-
 
 
 function App () {
@@ -20,8 +16,14 @@ function App () {
   const { borough } = useParams();
   const [selectedBorough, setSelectedBorough] = useState(borough)
 
-  function handleOnClick(borough){
-    setSelectedBorough(borough)
+    // array of all mural objects that match the selectedBorough state.
+    const matchingBorough = allMurals.filter((mural) => {
+      return mural.location.borough === selectedBorough;
+    });
+    // console.log(matchingBorough)
+
+  function handleOnClick(boro){
+    setSelectedBorough(boro)
   }
 
   useEffect(() => {
@@ -34,6 +36,7 @@ function App () {
         console.error(error);
       });
   }, []);
+  
   return (
   <>
   <Aside allMurals={allMurals} handleOnClick={handleOnClick} />
@@ -45,10 +48,10 @@ function App () {
 
     <Route path="/murals">
         <Route index element={<MuralList allMurals={allMurals} />} />
-        <Route path=":id" element={<MuralList />} />
+        <Route path=":borough" element={<MuralList allMurals={matchingBorough}/>} />
       </Route>
 
-      {/* <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} /> */}
+      <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
 
   </Routes>
   {/* <Footer /> */}

@@ -9,13 +9,21 @@ const Aside = ({ handleOnClick }) => {
     'Staten Island'
   ]
 
+
   return (
     <aside>
-      {boroughs.map((borough) => (
-        <li key={borough} onClick={()=>handleOnClick(borough.toLowerCase())}>
-        <Link to={`/murals/${borough.toLowerCase()}`}>{borough}</Link>
+      <ul>
+        <li>
+          <Link to="/murals">All Murals</Link>
         </li>
-      ))}
+        {boroughs.map((boro) => {
+          const formattedBoro = boro.split(' ').join("").toLowerCase()
+          return(
+            <li key={boro} onClick={()=>handleOnClick(boro)}>
+            <Link to={`/murals/${formattedBoro}`}>{boro}</Link>
+            </li>
+          )})}
+      </ul>
     </aside>
   )
 }
