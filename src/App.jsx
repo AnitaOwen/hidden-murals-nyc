@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 // import Home from "./components/Home";
 import MuralList from "./components/MuralList";
 // import MuralInfo from "./components/MuralInfo";
@@ -6,6 +6,7 @@ import MuralList from "./components/MuralList";
 // import Aside from "./components/Aside";
 import { getAllMurals} from "./api/fetch"
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 
 function App () {
@@ -21,23 +22,24 @@ function App () {
         console.error(error);
       });
   }, []);
-  return 
+  return (
   <>
   <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} />
+    {/* <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} /> */}
 
     <Route path="/murals">
         <Route index element={<MuralList allMurals={allMurals} />} />
         <Route path=":id" element={<MuralList />} />
       </Route>
 
-      <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
+      {/* <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} /> */}
 
   </Routes>
   {/* <Footer /> */}
   {/* <ArtistInfo /> */}
   </>
+  )
 };
 
 export default App;
