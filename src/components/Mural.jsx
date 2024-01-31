@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Mural = ({mural}) => {
   return (
-    <div className='mural-index'>
+    <div className='mural'>
         <Link to={`/mural/${mural.id}`}>
           <img src={mural.image} alt={mural.title} />
           <h2>

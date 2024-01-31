@@ -2,7 +2,7 @@ import { Route, Routes, useParams } from "react-router-dom";
 import { useEffect } from "react";
 // import Home from "./components/Home";
 import MuralList from "./components/MuralList";
-// import MuralInfo from "./components/MuralInfo";
+import MuralInfo from "./components/MuralInfo";
 // import ArtistInfo from "./components/ArtistInfo";
 import Aside from "./components/Aside";
 import { getAllMurals} from "./api/fetch"
@@ -48,7 +48,7 @@ function App () {
         <Route path=":id" element={<MuralList />} />
       </Route>
 
-      {/* <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} /> */}
+      <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
 
   </Routes>
   {/* <Footer /> */}
