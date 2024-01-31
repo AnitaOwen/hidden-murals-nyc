@@ -3,7 +3,7 @@ import Mural from './Mural'
 
 const MuralList = ({allMurals}) => {
   return (
-    <div>Mural List
+    <div>
       {allMurals.map((mural) => (
        <Mural key={mural.id} mural={mural}/>
       ))}
