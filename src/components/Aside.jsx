@@ -1,8 +1,22 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 
-const Aside = () => {
+const Aside = ({ handleOnClick }) => {
+  const boroughs = [
+    'Bronx',
+    'Brooklyn',
+    'Manhattan',
+    'Queens',
+    'Staten Island'
+  ]
+
   return (
-    <div>Aside</div>
+    <aside>
+      {boroughs.map((borough) => (
+        <li key={borough} onClick={()=>handleOnClick(borough.toLowerCase())}>
+        <Link to={`/murals/${borough.toLowerCase()}`}>{borough}</Link>
+        </li>
+      ))}
+    </aside>
   )
 }
 

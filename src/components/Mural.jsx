@@ -7,7 +7,7 @@ const Mural = ({mural}) => {
         {/* clickable link to student info */}
         <Link to={`/mural/${mural.id}`}>
           <img src={mural.image} alt={mural.title} />
-          <h2 className="user-info">
+          <h2>
             {mural.title} by {mural.artist} 
           </h2>
         </Link>
