@@ -20,14 +20,21 @@ const MuralInfo = ({allMurals}) => {
       {mural ? (
         <>
           <div>
-            <h2>Details</h2>
+            <h1>Art Details</h1>
+            <img src={mural.image} alt={mural.title} />
+            <h2>
+            {mural.title} by {mural.artist} 
+            </h2>
             <ul>
-              <li>Artist: {mural.artist}</li>
+              <li>Location: {mural.location.neighborhood}, {mural.location.borough}</li>
+              <li>Between: {mural.location.intersection}</li> 
+              <li>Year: {mural.year}</li>
+              <h3>Description: {mural.description}</h3>
             </ul>
           </div>
         </>
       ) : (
-        <p>Mural not found</p>
+        <p>Mural not found hello</p>
       )}
     </div>
   );
