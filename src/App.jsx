@@ -48,7 +48,7 @@ function App () {
         <Route path=":borough" element={<MuralList allMurals={allMurals} />} />
       </Route>
 
-      <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
+    <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
 
   </Routes>
   {/* <Footer /> */}
