@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 
 const Mural = ({mural}) => {
@@ -7,7 +7,7 @@ const Mural = ({mural}) => {
         <Link to={`/mural/${mural.id}`}>
           <img src={mural.image} alt={mural.title} />
           <h2>
-            {mural.title} by {mural.artist} 
+            "{mural.title}" by {mural.artist} 
           </h2>
         </Link>
     </div>
