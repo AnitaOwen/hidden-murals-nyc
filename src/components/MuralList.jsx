@@ -32,7 +32,7 @@ const MuralList = ({allMurals}) => {
         const neighborhoodMatch = location.neighborhood.toLowerCase().match(searchInput.toLowerCase())
         const streetMatch = location.intersection.toLowerCase().match(searchInput.toLowerCase())
         const titleMatch = title.toLowerCase().match(searchInput.toLowerCase())
-        const yearMatch = year.toString().includes(searchInput)
+        const yearMatch = year.toString().match(searchInput)
         return artistMatch || neighborhoodMatch || streetMatch || titleMatch || yearMatch
     })
   }
@@ -43,23 +43,31 @@ const MuralList = ({allMurals}) => {
       <Aside handleBoroughClick={handleBoroughClick} />
       <div>
         <form>
-            <label htmlFor="searchInput">Search</label>
-            <div>
+            <label htmlFor="searchInput">Search by artist, title, location, or year:</label>
+            {/* <div> */}
                 <input 
-                placeholder="Enter artist, title, location, or year"
+                placeholder="search"
                 type="search"
                 id="searchInput"
                 onChange={handleTextChange}
                 value={searchInput} 
                 />
-          </div>
+          {/* </div> */}
         </form>
     </div>
       <main>
-        {filteredBorough.map((mural) => (
-        <Mural key={mural.id} mural={mural}/>
+        {searchResults.length > 0 
+          ? searchResults.map((mural) => (
+          <Mural key={mural.id} mural={mural}/>
+          ))
+          : filteredBorough.map((mural) => (
+          <Mural key={mural.id} mural={mural}/>
         ))}
 
+        
+        {/* {filteredBorough.map((mural) => (
+        <Mural key={mural.id} mural={mural}/>
+        ))} */}
       </main>
     </>
   )
