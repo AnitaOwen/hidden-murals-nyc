@@ -63,11 +63,6 @@ const MuralList = ({allMurals}) => {
           : filteredBorough.map((mural) => (
           <Mural key={mural.id} mural={mural}/>
         ))}
-
-        
-        {/* {filteredBorough.map((mural) => (
-        <Mural key={mural.id} mural={mural}/>
-        ))} */}
       </main>
     </>
   )
