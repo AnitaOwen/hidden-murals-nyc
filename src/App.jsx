@@ -39,7 +39,7 @@ function App () {
   
   return (
   <>
-  <Aside allMurals={allMurals} handleOnClick={handleOnClick} />
+  {/* <Aside allMurals={allMurals} handleOnClick={handleOnClick} /> */}
 
   <Routes>
 
@@ -51,7 +51,7 @@ function App () {
         <Route path=":borough" element={<MuralList allMurals={matchingBorough}/>} />
       </Route>
 
-      <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
+    <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
 
   </Routes>
   {/* <Footer /> */}
