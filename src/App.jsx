@@ -1,6 +1,6 @@
 import { Route, Routes, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import Home from "./components/Home";
+import Home from "./components/Home";
 import MuralList from "./components/MuralList";
 import MuralInfo from "./components/MuralInfo";
 // import ArtistInfo from "./components/ArtistInfo";
@@ -43,7 +43,7 @@ function App () {
 
   <Routes>
 
-    {/* <Route path="/" element={<Home />} /> */}
+    <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
 
     <Route path="/murals">

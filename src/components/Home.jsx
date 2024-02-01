@@ -3,7 +3,7 @@ import PhotoGrid from './PhotoGrid'
 
 const Home = () => {
   return (
-    <div>Home
+    <div>
       <PhotoGrid/>
     </div>
   )
