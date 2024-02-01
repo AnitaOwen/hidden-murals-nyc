@@ -16,7 +16,7 @@ const MuralList = ({allMurals}) => {
 
     // array of all mural objects that match the selectedBorough state or all murals.
     const filteredBorough = selectedBorough ? allMurals.filter((mural) => mural.location.borough === selectedBorough) : allMurals
-    // console.log(filteredBorough)
+    console.log(filteredBorough)
 
     // Search bar text input
     function handleTextChange(event){
@@ -43,10 +43,10 @@ const MuralList = ({allMurals}) => {
       <Aside handleBoroughClick={handleBoroughClick} />
       <div>
         <form>
-            <label htmlFor="searchInput">Search by artist, title, location, or year:</label>
+            <label htmlFor="searchInput">Search all murals: </label>
             {/* <div> */}
                 <input 
-                placeholder="search"
+                placeholder="enter search term"
                 type="search"
                 id="searchInput"
                 onChange={handleTextChange}
@@ -54,7 +54,7 @@ const MuralList = ({allMurals}) => {
                 />
           {/* </div> */}
         </form>
-    </div>
+      </div>
       <main>
         {searchResults.length > 0 
           ? searchResults.map((mural) => (
