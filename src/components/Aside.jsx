@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Aside = ({ handleOnClick }) => {
+const Aside = ({ handleBoroughClick }) => {
   const boroughs = [
     'Bronx',
     'Brooklyn',
@@ -17,9 +17,9 @@ const Aside = ({ handleOnClick }) => {
           <Link to="/murals">All Murals</Link>
         </li>
         {boroughs.map((boro) => {
-          const formattedBoro = boro.split(' ').join("").toLowerCase()
+          const formattedBoro = boro.split(" ").join("").toLowerCase()
           return(
-            <li key={boro} onClick={()=>handleOnClick(boro)}>
+            <li key={boro} onClick={()=>handleBoroughClick(boro)}>
             <Link to={`/murals/${formattedBoro}`}>{boro}</Link>
             </li>
           )})}
