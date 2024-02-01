@@ -17,12 +17,10 @@ function App () {
   const [selectedBorough, setSelectedBorough] = useState(borough)
 
     // array of all mural objects that match the selectedBorough state.
-    const matchingBorough = allMurals.filter((mural) => {
-      return mural.location.borough === selectedBorough;
-    });
+    const matchingBorough = selectedBorough && allMurals.filter((mural) => mural.location.borough === selectedBorough) 
     // console.log(matchingBorough)
 
-  function handleOnClick(boro){
+  function handleBoroughClick(boro){
     setSelectedBorough(boro)
   }
 
@@ -39,7 +37,9 @@ function App () {
   
   return (
   <>
+
   {/* <Aside allMurals={allMurals} handleOnClick={handleOnClick} /> */}
+
 
   <Routes>
 
@@ -48,7 +48,7 @@ function App () {
 
     <Route path="/murals">
         <Route index element={<MuralList allMurals={allMurals} />} />
-        <Route path=":borough" element={<MuralList allMurals={matchingBorough}/>} />
+        <Route path=":borough" element={<MuralList allMurals={allMurals} matchingBorough={matchingBorough}/>} />
       </Route>
 
     <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
