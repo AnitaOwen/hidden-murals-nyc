@@ -5,7 +5,9 @@ const URL = import.meta.env.VITE_BASE_API_URL;
 export function getAllMurals() {
     return fetch(`${URL}/murals`).then((response) => response.json());
   }
-
+  export function getAllComments() {
+    return fetch(`${URL}/comments`).then((response) => response.json());
+  }
 // Create
 // export function createMural(mural) {
 //   const options = {

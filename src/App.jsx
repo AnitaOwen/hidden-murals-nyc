@@ -5,7 +5,7 @@ import MuralList from "./components/MuralList";
 import MuralInfo from "./components/MuralInfo";
 // import ArtistInfo from "./components/ArtistInfo";
 // import Aside from "./components/Aside";
-import { getAllMurals} from "./api/fetch"
+import { getAllComments, getAllMurals} from "./api/fetch"
 
 import "./App.css"
 import About from "./components/About";
@@ -13,6 +13,7 @@ import About from "./components/About";
 
 function App () {
   const [allMurals, setAllMurals] = useState ([])
+  const [allComments, setAllComments] = useState([])
   // const { borough } = useParams();
   // const [selectedBorough, setSelectedBorough] = useState(borough)
 
@@ -35,6 +36,16 @@ function App () {
       });
   }, []);
   
+  useEffect(() => {
+    getAllComments()
+      .then((data) => {
+        console.log(data);
+        setAllComments(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   return (
   <>
 
@@ -48,7 +59,7 @@ function App () {
         <Route path=":borough" element={<MuralList allMurals={allMurals} />} />
       </Route>
 
-    <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
+    <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} allComments={allComments}/>} />
 
   </Routes>
   {/* <Footer /> */}
