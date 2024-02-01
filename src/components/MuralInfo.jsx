@@ -34,7 +34,7 @@ const MuralInfo = ({allMurals}) => {
           </div>
         </>
       ) : (
-        <p>Mural not found</p>
+        <p>Mural not found hello</p>
       )}
     </div>
   );
