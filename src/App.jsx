@@ -1,28 +1,23 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Home from "./components/Home";
 import MuralList from "./components/MuralList";
 import MuralInfo from "./components/MuralInfo";
-// import ArtistInfo from "./components/ArtistInfo";
-// import Aside from "./components/Aside";
+
+import About from "./components/About";
 import { getAllComments, getAllMurals} from "./api/fetch"
 
 import "./App.css"
-import About from "./components/About";
 
 
 function App () {
   const [allMurals, setAllMurals] = useState ([])
   const [allComments, setAllComments] = useState([])
-  // const { borough } = useParams();
-  // const [selectedBorough, setSelectedBorough] = useState(borough)
 
-    // array of all mural objects that match the selectedBorough state.
-    // const matchingBorough = selectedBorough && allMurals.filter((mural) => mural.location.borough === selectedBorough) 
-    // console.log(matchingBorough)
+  // const [isDarkMode, setIsDarkMode] = useState(false)
 
-  // function handleBoroughClick(boro){
-  //   setSelectedBorough(boro)
+  // function toggleDarkMode(){
+  //   setIsDarkMode(!isDarkMode)
   // }
 
   useEffect(() => {
@@ -47,24 +42,29 @@ function App () {
       });
   }, []);
   return (
-  <>
 
-  <Routes>
+    // <div className={isDarkMode ? "dark-mode" : "light-mode"}>
+    <>
+      <Routes>
+    
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+    
+        {/* JAZON: this is your route for the form view. Please fill in anme of the component */}
+        {/* <Route path="/new" element={<name-of-your-component />} /> */}
+    
+        <Route path="/murals">
+            <Route index element={<MuralList allMurals={allMurals} />} />
+            <Route path=":borough" element={<MuralList allMurals={allMurals} />} />
+          </Route>
+    
+        <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} allComments={allComments}/>} />
+    
+      </Routes>
 
-    <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} />
+    </>
 
-    <Route path="/murals">
-        <Route index element={<MuralList allMurals={allMurals} />} />
-        <Route path=":borough" element={<MuralList allMurals={allMurals} />} />
-      </Route>
 
-    <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} allComments={allComments}/>} />
-
-  </Routes>
-  {/* <Footer /> */}
-  {/* <ArtistInfo /> */}
-  </>
   )
 };
 
