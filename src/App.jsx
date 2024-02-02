@@ -50,7 +50,7 @@ function App () {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
     
-        {/* JAZON: this is your route for the form view. Please fill in anme of the component */}
+        {/* JAZON: this is your route for the form view. Please fill in name of the component */}
         {/* <Route path="/new" element={<name-of-your-component />} /> */}
     
         <Route path="/murals">

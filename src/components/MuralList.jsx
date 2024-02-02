@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Mural from './Mural'
 import Aside from "./Aside";
@@ -6,17 +6,19 @@ import Aside from "./Aside";
 const MuralList = ({allMurals}) => {
   const [searchInput, setSearchInput] = useState("")
 
-  const { borough } = useParams();
-  const [selectedBorough, setSelectedBorough] = useState(borough || "")
+  // const { borough } = useParams();
+  const [selectedBorough, setSelectedBorough] = useState("")
   
   // Aside component boroughs onClick
   function handleBoroughClick(boro){
     setSelectedBorough(boro)
+    setSearchInput('')
   }
 
     // array of all mural objects that match the selectedBorough state or all murals.
-    const filteredBorough = selectedBorough ? allMurals.filter((mural) => mural.location.borough === selectedBorough) : allMurals
-    // console.log(filteredBorough)
+    const filteredBorough = selectedBorough ? allMurals.filter((mural) => mural.location.borough === selectedBorough) 
+    : allMurals
+    console.log(filteredBorough)
 
     // Search bar text input
     function handleTextChange(event){
@@ -43,10 +45,10 @@ const MuralList = ({allMurals}) => {
       <Aside handleBoroughClick={handleBoroughClick} />
       <div>
         <form>
-            <label htmlFor="searchInput">Search by artist, title, location, or year:</label>
+            <label htmlFor="searchInput">Search all murals: </label>
             {/* <div> */}
                 <input 
-                placeholder="search"
+                placeholder="enter search term"
                 type="search"
                 id="searchInput"
                 onChange={handleTextChange}
@@ -54,9 +56,9 @@ const MuralList = ({allMurals}) => {
                 />
           {/* </div> */}
         </form>
-    </div>
+      </div>
       <main>
-        {searchResults.length > 0 
+        {searchInput.length > 0
           ? searchResults.map((mural) => (
           <Mural key={mural.id} mural={mural}/>
           ))
