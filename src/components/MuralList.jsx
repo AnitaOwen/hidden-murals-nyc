@@ -18,7 +18,7 @@ const MuralList = ({allMurals}) => {
     // array of all mural objects that match the selectedBorough state or all murals.
     const filteredBorough = selectedBorough ? allMurals.filter((mural) => mural.location.borough === selectedBorough) 
     : allMurals
-    console.log(filteredBorough)
+    // console.log(filteredBorough)
 
     // Search bar text input
     function handleTextChange(event){
@@ -30,15 +30,17 @@ const MuralList = ({allMurals}) => {
     function filteredSearchMurals(){
       return allMurals.filter((mural)=> {
         const {artist, location, title, year} = mural
-        const artistMatch = artist.toLowerCase().match(searchInput.toLowerCase())
-        const neighborhoodMatch = location.neighborhood.toLowerCase().match(searchInput.toLowerCase())
-        const streetMatch = location.intersection.toLowerCase().match(searchInput.toLowerCase())
-        const titleMatch = title.toLowerCase().match(searchInput.toLowerCase())
+        const artistMatch = artist?.toLowerCase().match(searchInput.toLowerCase())
+        const neighborhoodMatch = location.neighborhood?.toLowerCase().match(searchInput.toLowerCase())
+        const streetMatch = location.intersection?.toLowerCase().match(searchInput.toLowerCase())
+        const titleMatch = title?.toLowerCase().match(searchInput.toLowerCase())
         const yearMatch = year.toString().match(searchInput)
         return artistMatch || neighborhoodMatch || streetMatch || titleMatch || yearMatch
     })
   }
   const searchResults = filteredSearchMurals()
+
+
     
   return (
     <>
