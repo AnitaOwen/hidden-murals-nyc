@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Aside = ({ handleBoroughClick }) => {
+const Aside = ({ handleBoroughClick, allMurals }) => {
   const boroughs = [
     'Bronx',
     'Brooklyn',
@@ -21,7 +21,7 @@ const Aside = ({ handleBoroughClick }) => {
           return(
             <li key={boro} 
             onClick={()=>handleBoroughClick(boro)}>
-            <Link to={`/murals/${formattedBoro}`}>{boro}</Link>
+            <Link to={`/murals/${formattedBoro}`}>{boro} </Link>
             </li>
           )})}
       </ul>
