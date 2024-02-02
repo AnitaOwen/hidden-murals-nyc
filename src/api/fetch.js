@@ -3,11 +3,23 @@ const URL = import.meta.env.VITE_BASE_API_URL;
 
 // Index/Get all
 export function getAllMurals() {
-    return fetch(`${URL}/murals`).then((response) => response.json());
-  }
+  return fetch(`${URL}/murals`).then((response) => response.json());
+}
 export function getAllComments() {
-    return fetch(`${URL}/comments`).then((response) => response.json());
-  }
+  return fetch(`${URL}/comments`).then((response) => response.json());
+}
+
+export function createMural(newMural) {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(newMural),
+    headers: { "Content-Type": "application/json" },
+  };
+  return fetch(`${URL}/murals`, options).then((response) => {
+    return response.json();
+  });
+}
+
 // Create
 
 export function createComments(comment) {

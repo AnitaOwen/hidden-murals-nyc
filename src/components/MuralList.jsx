@@ -1,18 +1,18 @@
 // import { useParams } from "react-router-dom";
 import { useState } from "react";
-import Mural from './Mural'
+import Mural from "./Mural";
 import Aside from "./Aside";
 
-const MuralList = ({allMurals}) => {
-  const [searchInput, setSearchInput] = useState("")
+const MuralList = ({ allMurals }) => {
+  const [searchInput, setSearchInput] = useState("");
 
   // const { borough } = useParams();
-  const [selectedBorough, setSelectedBorough] = useState("")
-  
+  const [selectedBorough, setSelectedBorough] = useState("");
+
   // Aside component boroughs onClick
-  function handleBoroughClick(boro){
-    setSelectedBorough(boro)
-    setSearchInput('')
+  function handleBoroughClick(boro) {
+    setSelectedBorough(boro);
+    setSearchInput("");
   }
 
     // array of all mural objects that match the selectedBorough state or all murals.
@@ -20,12 +20,12 @@ const MuralList = ({allMurals}) => {
     : allMurals
     // console.log(filteredBorough)
 
-    // Search bar text input
-    function handleTextChange(event){
-      const input = event.target.value
-      setSearchInput(input)
-    }
-
+  // Search bar text input
+  function handleTextChange(event) {
+    const input = event.target.value;
+    setSearchInput(input);
+  }
+  
     // Filter murals based on search input
     function filteredSearchMurals(){
       return allMurals.filter((mural)=> {
@@ -40,36 +40,32 @@ const MuralList = ({allMurals}) => {
   }
   const searchResults = filteredSearchMurals()
 
-
-    
   return (
     <>
       <Aside handleBoroughClick={handleBoroughClick} />
       <div>
         <form>
-            <label htmlFor="searchInput">Search all murals: </label>
-            {/* <div> */}
-                <input 
-                placeholder="enter search term"
-                type="search"
-                id="searchInput"
-                onChange={handleTextChange}
-                value={searchInput} 
-                />
+          <label htmlFor="searchInput">Search all murals: </label>
+          {/* <div> */}
+          <input
+            placeholder="enter search term"
+            type="search"
+            id="searchInput"
+            onChange={handleTextChange}
+            value={searchInput}
+          />
           {/* </div> */}
         </form>
       </div>
       <main>
         {searchInput.length > 0
-          ? searchResults.map((mural) => (
-          <Mural key={mural.id} mural={mural}/>
-          ))
+          ? searchResults.map((mural) => <Mural key={mural.id} mural={mural} />)
           : filteredBorough.map((mural) => (
-          <Mural key={mural.id} mural={mural}/>
-        ))}
+              <Mural key={mural.id} mural={mural} />
+            ))}
       </main>
     </>
-  )
-}
+  );
+};
 
-export default MuralList
+export default MuralList;
