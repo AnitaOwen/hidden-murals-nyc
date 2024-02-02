@@ -9,6 +9,20 @@ export function getAllComments() {
     return fetch(`${URL}/comments`).then((response) => response.json());
   }
 // Create
+
+export function createComments(comment) {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(comment),
+    headers: { "Content-Type": "application/json" },
+  };
+  return fetch(`${URL}/comments/`, options).then((response) => {
+    return response.json();
+  });
+}
+
+// Create Mural
+
 // export function createMural(mural) {
 //   const options = {
 //     method: "POST",

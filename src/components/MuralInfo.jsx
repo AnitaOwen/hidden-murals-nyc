@@ -1,55 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
-import { getAllComments } from '../api/fetch';
+import { getAllComments, createComments} from '../api/fetch';
 
 
 const MuralInfo = ({ allMurals }) => {
-  //useParams
+  //USEPARAMS
   const { id } = useParams();
-  //useStates
-  const [commentInput, setCommentInput] = useState({ author: "", comment: "" });
+  //USESTATES
   const [mural, setMural] = useState(null)
   const [allComments, setAllComments] = useState([])
-  const [notes, setNotes] = useState([])
+  const [commentInput, setCommentInput] = useState({ author: "", text: ""});
+  // const [notes, setNotes] = useState([])
   //useeffect to find mural
   useEffect(() => {
     const matchingMural = allMurals.find((mural) => mural.id === parseInt(id));
     setMural(matchingMural);
   }, [id, allMurals]);
+  
   // useeffect to find comments
   useEffect(() => {
     getAllComments()
-      .then((data) => {
-        console.log(data);
-        setAllComments(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    .then((data) => {
+      console.log(data);
+      setAllComments(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }, []);
   
   const matchingComments = allComments.filter((comment) => comment.muralId === parseInt(id));
   
-
-  //Define function to handle form submission
-  const handleSubmit = (event) => {
+  
+  // HANDLE FORM SUBMIT
+  function handleSubmit(event) {
     event.preventDefault();
-    // Created form inputs
-    const newNote = {
-      author: commentInput.author,
-      comment: commentInput.comment,
-    };
-    //Updated note state with notes
-    setNotes([...notes, newNote]);
-    // Updated form inputs to reset.
-    setCommentInput({ author: "", comment: "" });
+    // PREPARE THE COMMENT DATA
+    createComments({ ...commentInput, muralId: parseInt(id) })
+      .then((response) => {
+        // Handle success if needed
+        console.log("Comment submitted successfully", response);
+        // Update the state or perform other actions as needed
+        setAllComments([...allComments, response]);
+        setCommentInput({ author: "", text: "" });
+      })
+      .catch((error) => console.error(error));
   };
-  // Define function to update text change
-  const handleTextChange = (event) => {
-    setCommentInput({ ...commentInput, [event.target.name]: event.target.value });
-  };
-
+function handleTextChange(event) {
+  setCommentInput({
+    ...commentInput,
+    [event.target.name]: event.target.value,
+  });
+}
   return (
     <div className="container">
       <Link to="/">
@@ -73,7 +76,7 @@ const MuralInfo = ({ allMurals }) => {
             <h3>Description: {mural.description}</h3>
           </ul>
 
-          {/* 1-on-1 Notes Section */}
+          {/* Comments Section */}
 
           <section>
             <br />
@@ -82,7 +85,6 @@ const MuralInfo = ({ allMurals }) => {
               {matchingComments.map((comment) => (
                 <li key={comment.id}>
                   <strong>{comment.author}:</strong> {comment.text}
-                  <p>{comment.text}</p>
                 </li>
               ))}
             </ul>
@@ -106,21 +108,14 @@ const MuralInfo = ({ allMurals }) => {
                   Comment:
                 </h3>
                 <input
-                  name="comment"
-                  value={commentInput.comment}
+                  name="text"
+                  value={commentInput.text}
                   onChange={handleTextChange}
                   required
                 />
               </label>
               <button type="submit">Submit</button>
             </form>
-            <ul>
-              {notes.map((note, index) => (
-                <li key={index}>
-                  <strong>{note.author}:</strong> {note.comment}
-                </li>
-              ))}
-            </ul>
           </section>
         </div>
       ) : (
