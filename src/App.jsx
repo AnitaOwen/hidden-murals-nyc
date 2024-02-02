@@ -5,14 +5,14 @@ import MuralList from "./components/MuralList";
 import MuralInfo from "./components/MuralInfo";
 
 import About from "./components/About";
-import { getAllComments, getAllMurals} from "./api/fetch"
+import { getAllMurals} from "./api/fetch"
 
 import "./App.css"
 
 
 function App () {
   const [allMurals, setAllMurals] = useState ([])
-  const [allComments, setAllComments] = useState([])
+  
 
   // const [isDarkMode, setIsDarkMode] = useState(false)
 
@@ -31,16 +31,7 @@ function App () {
       });
   }, []);
   
-  useEffect(() => {
-    getAllComments()
-      .then((data) => {
-        console.log(data);
-        setAllComments(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+
   return (
 
     // <div className={isDarkMode ? "dark-mode" : "light-mode"}>
@@ -58,7 +49,7 @@ function App () {
             <Route path=":borough" element={<MuralList allMurals={allMurals} />} />
           </Route>
     
-        <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} allComments={allComments}/>} />
+        <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} />} />
     
       </Routes>
 
