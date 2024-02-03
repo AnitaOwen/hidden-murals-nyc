@@ -1,0 +1,64 @@
+
+
+button{
+    margin: 8px;
+    padding: 10px 20px;
+    background-color: #88f1f3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #98fb8b;
+  }
+
+form{
+    margin: 15px 0;
+}
+h3{
+    text-align: center;
+    margin: 5px 0;
+}
+ul{
+    list-style: none;
+}
+
+li{
+    margin: 8px 0;
+}
+.all-comments{
+    background: rgba(5, 139, 197, 0.307);
+    margin: 35px auto;
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px
+}
+.all-comments h3{
+    border-bottom: 1px solid black
+}
+.all-comments ul{
+    margin-top: 20px;
+}
+
+/* .author-input{
+    text-align: left;
+} */
+.comment-input{
+    margin-top: 10px;
+    height: 80px;
+
+}
+.key{
+    font-weight: bold;
+    color:rgb(3, 71, 168);
+}
+
+.artist{
+    color:rgb(196, 73, 16);
+}
+
+.author-key{
+    font-weight: bold;
+    color:rgb(3, 71, 168);
+}

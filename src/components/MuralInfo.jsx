@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { getAllComments, createComments} from '../api/fetch';
-
+import"./MuralInfo.css"
 
 const MuralInfo = ({ allMurals }) => {
+  const navigate = useNavigate()
   //USEPARAMS
   const { id } = useParams();
   //USESTATES
@@ -12,6 +13,7 @@ const MuralInfo = ({ allMurals }) => {
   const [allComments, setAllComments] = useState([])
   const [commentInput, setCommentInput] = useState({ author: "", text: ""});
   // const [notes, setNotes] = useState([])
+
   //useeffect to find mural
   useEffect(() => {
     const matchingMural = allMurals.find((mural) => mural.id === parseInt(id));
@@ -47,12 +49,18 @@ const MuralInfo = ({ allMurals }) => {
       })
       .catch((error) => console.error(error));
   };
-function handleTextChange(event) {
-  setCommentInput({
-    ...commentInput,
-    [event.target.name]: event.target.value,
-  });
-}
+  function handleTextChange(event) {
+    setCommentInput({
+      ...commentInput,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  // handle Update button click
+  function handleUpdateClick(){
+    navigate(`/mural/${id}/update`)
+  }
+
   return (
     <div className="container">
       <Link to="/">
@@ -64,57 +72,62 @@ function handleTextChange(event) {
 
       {mural ? (
         <div>
-          <h1>Art Details</h1>
+          {/* <h2>Art Details</h2> */}
           <img src={mural.image} alt={mural.title} />
           <h2>
-            {mural.title} by {mural.artist}
+            "{mural.title}" by <span className="artist">{mural.artist}</span>
           </h2>
           <ul>
-            <li> <span>Location:</span> {mural.location.neighborhood}, {mural.location.borough}</li>
-            <li> <span>Between:</span> {mural.location.intersection}</li>
-            <li> <span>Year:</span> {mural.year}</li>
-            <h3>Description: {mural.description}</h3>
+            <li><span className="key">Location:</span> {mural.location.neighborhood}, {mural.location.borough}</li>
+            <li><span className="key">Intersection:</span> {mural.location.intersection}</li>
+            <li><span className="key">Year:</span> {mural.year}</li>
+            <li><span className="key">Description:</span> {mural.description}</li>
           </ul>
+
+          {/* Update Form button */}
+          <button onClick={handleUpdateClick}>Update mural information</button>
 
           {/* Comments Section */}
 
           <section>
-            <br />
-            <h3>Comment Section</h3>
-            <ul>
-              {matchingComments.map((comment) => (
-                <li key={comment.id}>
-                  <strong>{comment.author}:</strong> {comment.text}
-                </li>
-              ))}
-            </ul>
+            <div className="all-comments">
+              <h3>Comments</h3>
+              <ul>
+                {matchingComments.map((comment) => (
+                  <li key={comment.id}>
+                    <span className="author-key">{comment.author}:</span> {comment.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
 
             <form onSubmit={handleSubmit}>
               <label>
-                <h3>
-                  Author:
-                </h3>
+                <h4>Add a comment</h4>
                 <input
+                  placeholder="Enter Name"
                   name="author"
                   value={commentInput.author}
                   onChange={handleTextChange}
+                  className="author-input"
                   required
-                />
+                  />
               </label>
 
               <label>
-                <h3>
-                  Comment:
-                </h3>
                 <input
+                  placeholder="Enter Comment"
                   name="text"
                   value={commentInput.text}
                   onChange={handleTextChange}
+                  className="comment-input"
                   required
                 />
               </label>
-              <button type="submit">Submit</button>
+              <div>
+                <button type="submit">Submit Comment</button>
+              </div>
             </form>
           </section>
         </div>

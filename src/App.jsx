@@ -41,14 +41,20 @@ function App () {
     
         <Route path="mural/new" element={<MuralForm />} />
           
-        <Route path="/mural/update" element={<UpdateForm />} />
 
         <Route path="/murals">
             <Route index element={<MuralList allMurals={allMurals} />} />
             <Route path=":borough" element={<MuralList allMurals={allMurals} />} />
           </Route>
     
-        <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} allComments={allComments}/>} />
+        
+        {/* <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} allComments={allComments}/>} />
+        <Route path="/mural/:id/update" element={<UpdateForm />} /> */}
+
+        <Route path="/mural/:id">
+          <Route index element={<MuralInfo allMurals={allMurals} allComments={allComments} />} />
+          <Route path="update" element={<UpdateForm />} />
+        </Route>
     
       </Routes>
     </>
