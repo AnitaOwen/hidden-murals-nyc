@@ -24,9 +24,6 @@ ul{
     list-style: none;
 }
 
-li{
-    margin: 8px 0;
-}
 .all-comments{
     background: rgba(5, 139, 197, 0.307);
     margin: 35px auto;
@@ -58,7 +55,31 @@ li{
     color:rgb(196, 73, 16);
 }
 
+.list-item{
+    margin: 8px 0;
+}
+.comments{
+    text-align: center;
+    margin: 15px 0;
+}
 .author-key{
     font-weight: bold;
     color:rgb(3, 71, 168);
+}
+
+.mural-image{
+    margin-bottom: 20px;
+}
+
+.mural-image{
+    width: 100%;
+    height: auto;
+}
+.two-columns{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+.info-parent-container{
+    margin-left: 15px;
 }

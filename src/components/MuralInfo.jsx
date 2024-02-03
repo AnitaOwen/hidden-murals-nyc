@@ -62,39 +62,45 @@ const MuralInfo = ({ allMurals }) => {
   }
 
   return (
-    <div className="container">
-      <Link to="/">
-        <h1>Home</h1>
-      </Link>
-      <Link to="/murals">
-        <h1>All Murals</h1>
-      </Link>
+    <div className="info-parent-container">
+      <div className="top-links">
+        <Link to="/">
+          <h1>Home</h1>
+        </Link>
+        <Link to="/murals">
+          <h1>All Murals</h1>
+        </Link>
+      </div>
 
-      {mural ? (
-        <div>
-          {/* <h2>Art Details</h2> */}
-          <img src={mural.image} alt={mural.title} />
-          <h2>
-            "{mural.title}" by <span className="artist">{mural.artist}</span>
-          </h2>
-          <ul>
-            <li><span className="key">Location:</span> {mural.location.neighborhood}, {mural.location.borough}</li>
-            <li><span className="key">Intersection:</span> {mural.location.intersection}</li>
-            <li><span className="key">Year:</span> {mural.year}</li>
-            <li><span className="key">Description:</span> {mural.description}</li>
-          </ul>
+      <div className="two-columns">
+        {mural ? (
+            <div classname="info-container">
+              <img src={mural.image} alt={mural.title} className="mural-image"/>
+              <h2>
+                "{mural.title}" by <span className="artist">{mural.artist}</span>
+              </h2>
+              <ul>
+                <li className="list-item"><span className="key">Location:</span> {mural.location.neighborhood}, {mural.location.borough}</li>
+                <li className="list-item"><span className="key">Intersection:</span> {mural.location.intersection}</li>
+                <li className="list-item"><span className="key">Year:</span> {mural.year}</li>
+                <li className="list-item"><span className="key">Description:</span> {mural.description}</li>
+              </ul>
+        
 
-          {/* Update Form button */}
-          <button onClick={handleUpdateClick}>Update mural information</button>
+              {/* Update Form button */}
+              <button onClick={handleUpdateClick}>Update mural information</button>
+          </div> 
+          ) : (
+            <p>Mural not found</p>
+          )}
 
           {/* Comments Section */}
-
           <section>
             <div className="all-comments">
               <h3>Comments</h3>
               <ul>
                 {matchingComments.map((comment) => (
-                  <li key={comment.id}>
+                  <li key={comment.id} className="list-item comments">
                     <span className="author-key">{comment.author}:</span> {comment.text}
                   </li>
                 ))}
@@ -131,10 +137,8 @@ const MuralInfo = ({ allMurals }) => {
             </form>
           </section>
         </div>
-      ) : (
-        <p>Mural not found</p>
-      )}
     </div>
+
   );
 };
 

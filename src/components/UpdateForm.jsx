@@ -77,6 +77,18 @@ const UpdateForm = () => {
 
       <div className="label-input">
         <div>
+          <label htmlFor="neighborhood">Neighborhood:</label>
+        </div>
+        <input
+          type="text"
+          id="neighborhood"
+          value={updateMural.location.neighborhood}
+          onChange={handleTextChange}
+        />
+      </div>
+
+      <div className="label-input">
+        <div>
           <label htmlFor="borough">Borough:</label>
         </div>
         <select
