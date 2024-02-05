@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { createMural } from "../api/fetch";
 
 function MuralForm() {
-  const navigate = useNavigate();
   const [newMural, setNewMural] = useState({
     image: "",
     artist: "",
@@ -18,11 +17,12 @@ function MuralForm() {
     year: "",
     description: "",
   });
+  //   const navigate = useNavigate();
   function handleSubmit(event) {
     event.preventDefault();
     createMural(newMural)
       .then((response) => {
-        navigate("/murals");
+        console.log("SUCCESS!!");
       })
       .catch((error) => {
         console.error(error);
@@ -54,10 +54,26 @@ function MuralForm() {
       });
     }
   }
+  function imageUploader() {
+    const [file, setFile] = useState();
+    function handleChange(e) {
+      console.log(e.target.files);
+      setFile(URL.createObjectURL(e.target.files[0]));
+    }
+
+    return (
+      <div className="App">
+        <h2>Add Image:</h2>
+        <input type="file" onChange={handleChange} />
+        <img src={file} />
+      </div>
+    );
+  }
   //rendering
   return (
     <form onSubmit={handleSubmit}>
       <div>
+        <div>{imageUploader()}</div>
         <div>
           <label htmlFor="artist">Artist:</label>
         </div>
