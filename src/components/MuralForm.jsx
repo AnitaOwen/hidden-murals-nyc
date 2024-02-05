@@ -31,10 +31,28 @@ function MuralForm() {
   console.log("test");
 
   function handleTextChange(event) {
-    setNewMural({
-      ...newMural,
-      [event.target.id]: event.target.value,
-    });
+    const inputId = event.target.id;
+    //checking for location
+    if (inputId.includes("location")) {
+      // splits "location.borough" and such into just borough
+      //   const newKey = inputId.split(".")[1];
+      const newKey = inputId.replace("location.", "");
+      // ex. location.intersection -> intersection
+      //updates newMural object
+      setNewMural({
+        ...newMural,
+        //replaces location key with specific borough, neighborhood, or intersection based on user input
+        location: {
+          ...newMural.location,
+          [newKey]: event.target.value,
+        },
+      });
+    } else {
+      setNewMural({
+        ...newMural,
+        [inputId]: event.target.value,
+      });
+    }
   }
   //rendering
   return (
@@ -70,7 +88,7 @@ function MuralForm() {
         </div>
         <input
           type="text"
-          id="neighborhood"
+          id="location.neighborhood"
           value={newMural.location.neighborhood}
           onChange={handleTextChange}
         />
@@ -81,7 +99,7 @@ function MuralForm() {
           <label htmlFor="borough">Borough:</label>
         </div>
         <select
-          id="borough"
+          id="location.borough"
           name="borough"
           value={newMural.location.borough}
           onChange={handleTextChange}
@@ -100,7 +118,7 @@ function MuralForm() {
         </div>
         <input
           type="text"
-          id="intersection"
+          id="location.intersection"
           value={newMural.location.intersection}
           onChange={handleTextChange}
         />
