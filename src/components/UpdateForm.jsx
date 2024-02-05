@@ -55,7 +55,7 @@ const UpdateForm = () => {
       <Link to={`/mural/${id}`}>
             <p>Go Back</p>
           </Link>
-        <img src={updateMural.image} alt="Hidden Mural" />
+        <img className="large-image" src={updateMural.image} alt="Hidden Mural" />
         <div className="label-input">
           <div>
             <label htmlFor="artist">Artist:</label>
@@ -63,6 +63,7 @@ const UpdateForm = () => {
           <input
             type="text"
             id="artist"
+            value={updateMural.artist}
             onChange={handleTextChange}
           />
         </div>
