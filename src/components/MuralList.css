@@ -1,0 +1,59 @@
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dbdbdb;
+    font-family: 'Raleway', sans-serif;
+  } */
+
+
+.new-post {
+    margin-left: 20px;
+  }
+  
+  .new-post p {
+    color: #0095f6;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .search-input {
+    text-align: right;
+    /* display: flex;
+    justify-content: space-between; */
+    padding: 10px 20px;
+    background-color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .header {
+    /* text-align: right; */
+    border-bottom: 1px solid #050505;
+    display:flex;
+    margin-left: 300px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5em;
+    font-family: 'Raleway', sans-serif; 
+    margin-bottom: 20px;
+  }
+
+  .header a {
+    text-decoration: none;
+  }
+
+  .search-input input {
+    width: 250px;
+    font-family: 'Raleway', sans-serif; 
+    font-size: 0.8em
+
+  }
+
+  .header-buttons p{
+    width: 100px;
+    font-family: 'Raleway', sans-serif; 
+    font-size: 1.2em;
+    color:black
+  }
