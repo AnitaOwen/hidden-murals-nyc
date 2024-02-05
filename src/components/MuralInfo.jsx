@@ -71,25 +71,25 @@ const MuralInfo = ({ allMurals }) => {
   };
 
   // COMMENT DELETE FUNCTION
-  const handleCommentDelete = (commentId) => {
-    destroyComment(commentId)
-      .then(() => {
-        console.log("Comment deleted successfully");
-        const updatedComments = allComments.filter(comment => comment.id !== commentId);
-        setAllComments(updatedComments);
-      })
-      .catch((error) => console.error(error));
-  };
+  // const handleCommentDelete = (commentId) => {
+  //   destroyComment(commentId)
+  //     .then(() => {
+  //       console.log("Comment deleted successfully");
+  //       const updatedComments = allComments.filter(comment => comment.id !== commentId);
+  //       setAllComments(updatedComments);
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
 
   return (
     <div className="info-parent-container">
       <div className="top-links">
         <Link to="/">
-          <h1>Home</h1>
+          <p>Home</p>
         </Link>
         <Link to="/murals">
-          <h1>All Murals</h1>
+          <p>All Murals</p>
         </Link>
       </div>
 
@@ -111,13 +111,13 @@ const MuralInfo = ({ allMurals }) => {
 
               {/* Update Form button */}
               <button onClick={handleUpdateClick}>Edit Mural Details</button>
+              {/* Delete button */}
               <button onClick={handleDelete}>Delete Mural</button>
           </div> 
           ) : (
             <p>Mural not found</p>
           )}
 
-         
 
           {/* Comments Section */}
           <section>
@@ -127,7 +127,7 @@ const MuralInfo = ({ allMurals }) => {
                 {matchingComments.map((comment) => (
                   <li key={comment.id} className="list-item comments">
                     <span className="author-key">{comment.author}:</span> {comment.text}
-                    <button onClick={() => handleCommentDelete(comment.id)}>Delete</button>
+                    {/* <button onClick={() => handleCommentDelete(comment.id)}>Delete</button> */}
                   </li>
                 ))}
               </ul>

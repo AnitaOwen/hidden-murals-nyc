@@ -12,7 +12,9 @@ const Aside = ({ handleBoroughClick, allMurals }) => {
 
   return (
     <div className="sidenav">
+      <Link to="/">
       <h3 className="sidenav-logo">Hidden Murals</h3>
+      </Link>
       <div className="sidenav-buttons">
         <ul>
 
@@ -31,9 +33,6 @@ const Aside = ({ handleBoroughClick, allMurals }) => {
             )
           })}
         <li className="sidenav-buttons" >
-          <Link to="/">
-            <p>Home</p>
-          </Link>
         </li>
 
         </ul>
