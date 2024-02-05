@@ -22,13 +22,6 @@ const UpdateForm = () => {
   })
 
   function handleTextChange(event) {
-    setUpdateMural({
-      ...updateMural,
-      [event.target.id]: event.target.value,
-    });
-  }
-
-  function handleTextChange(event) {
     const { id, value } = event.target;
   
     // If the property is nested (e.g., "location.neighborhood")
