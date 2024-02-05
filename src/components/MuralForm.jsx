@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createMural } from "../api/fetch";
 
 function MuralForm() {
+  const navigate = useNavigate();
   const [newMural, setNewMural] = useState({
     image: "",
     artist: "",
@@ -17,12 +18,11 @@ function MuralForm() {
     year: "",
     description: "",
   });
-  //   const navigate = useNavigate();
   function handleSubmit(event) {
     event.preventDefault();
     createMural(newMural)
       .then((response) => {
-        console.log("SUCCESS!!");
+        navigate("/murals");
       })
       .catch((error) => {
         console.error(error);
