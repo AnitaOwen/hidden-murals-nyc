@@ -57,9 +57,9 @@ export function destroyMural(id) {
 }
 
 // Delete
-export function destroyComment(id) {
-  const options = { method: "DELETE" };
-  return fetch(`${URL}/comments/${id}`, options);
-}
+// export function destroyComment(id) {
+//   const options = { method: "DELETE" };
+//   return fetch(`${URL}/comments/${id}`, options);
+// }
 
 
