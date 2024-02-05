@@ -1,0 +1,33 @@
+import { useEffect, useRef } from "react"
+import { useState } from "react";
+
+const UploadWidget = () => {
+    const [imageURL, setImageURL] = useState('')
+
+    const cloudinaryRef = useRef();
+    const widgetRef = useRef();
+    useEffect(() => {
+        cloudinaryRef.current = window.cloudinary 
+        console.log(cloudinaryRef.current)
+        widgetRef.current = cloudinaryRef.current.createUploadWidget({
+            cloudName:'dhexjuuzd',
+            uploadPreset: 'upload-image',
+        }, function (error, result) {
+            if (result && result.event === 'success') {
+                const uploadedURL = result.info.secure_url;
+                setImageURL(uploadedURL);
+                console.log('Image uploaded. URL:', uploadedURL);
+            } else if (error) {
+                console.error('Error uploading image:', error);
+            }
+            console.log(result.info.url)
+        })
+    }, [])
+    return (
+        <button onClick={() => widgetRef.current.open()}>
+            Upload
+        </button>
+    )
+}
+
+export default UploadWidget
