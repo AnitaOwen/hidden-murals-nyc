@@ -28,6 +28,27 @@ const UpdateForm = () => {
     });
   }
 
+  function handleTextChange(event) {
+    const { id, value } = event.target;
+  
+    // If the property is nested (e.g., "location.neighborhood")
+    if (id.includes('location')) {
+      const [location, locationValue] = id.split('.');
+      setUpdateMural({
+        ...updateMural,
+        location: {
+          ...updateMural[location],
+          [locationValue]: value,
+        },
+      });
+    } else {
+      setUpdateMural({
+        ...updateMural,
+        [id]: value,
+      });
+    }
+  }
+
   function handleUpdateSubmit(event) {
     event.preventDefault();
     editMural(id, updateMural)
