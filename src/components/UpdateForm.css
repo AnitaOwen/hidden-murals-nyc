@@ -22,3 +22,8 @@ input{
     /* overflow-wrap: break-word; */
     /* word-wrap: break-word; */
 }
+
+.large-image{
+    width:70%;
+    height: auto;
+}
