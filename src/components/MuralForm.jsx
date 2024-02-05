@@ -90,6 +90,7 @@ function MuralForm() {
           type="text"
           id="location.neighborhood"
           value={newMural.location.neighborhood}
+          required
           onChange={handleTextChange}
         />
       </div>
@@ -102,6 +103,7 @@ function MuralForm() {
           id="location.borough"
           name="borough"
           value={newMural.location.borough}
+          required
           onChange={handleTextChange}
         >
           <option value="Manhattan">Manhattan</option>
@@ -120,6 +122,7 @@ function MuralForm() {
           type="text"
           id="location.intersection"
           value={newMural.location.intersection}
+          required
           onChange={handleTextChange}
         />
       </div>
@@ -144,6 +147,7 @@ function MuralForm() {
           type="text"
           id="description"
           value={newMural.description}
+          required
           onChange={handleTextChange}
         />
       </div>
