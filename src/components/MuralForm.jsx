@@ -6,6 +6,7 @@ import UploadWidget from "./UploadWidget";
 import { createMural } from "../api/fetch";
 
 function MuralForm() {
+
   const [newMural, setNewMural] = useState({
     image: "",
     artist: "",
@@ -18,6 +19,13 @@ function MuralForm() {
     year: "",
     description: "",
   });
+  function setImageURL(uploadedURL){
+    setNewMural({
+      ...newMural,
+      image: uploadedURL
+    })
+  }
+
   //   const navigate = useNavigate();
   function handleSubmit(event) {
     event.preventDefault();
@@ -59,7 +67,7 @@ function MuralForm() {
   //rendering
   return (
     <form onSubmit={handleSubmit}>
-      <UploadWidget/>
+      <UploadWidget setImageURL={setImageURL}/>
       <div>
         <div>
           <label htmlFor="artist">Artist:</label>

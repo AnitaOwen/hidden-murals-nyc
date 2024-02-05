@@ -87,8 +87,8 @@ ul{
 }
 .top-links p{
     font-size: 26px;
-    border: 2px solid red;
-    width: 10%;
+}
+
 
 .top-links {
     display: flex;

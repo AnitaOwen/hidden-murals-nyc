@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "react"
-import { useState } from "react";
 
-const UploadWidget = () => {
-    const [imageURL, setImageURL] = useState('')
+const UploadWidget = ({setImageURL}) => {
 
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
