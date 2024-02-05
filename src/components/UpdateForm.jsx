@@ -51,9 +51,6 @@ const UpdateForm = () => {
 
   return (
     <>
-      {/* <Link to={`/mural/${id}`}>
-            <p>Go Back</p>
-          </Link> */}
       <form onSubmit={handleUpdateSubmit}>
       <Link to={`/mural/${id}`}>
             <p>Go Back</p>
@@ -66,7 +63,6 @@ const UpdateForm = () => {
           <input
             type="text"
             id="artist"
-            value={updateMural.artist}
             onChange={handleTextChange}
           />
         </div>
