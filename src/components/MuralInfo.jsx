@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import"./MuralInfo.css"
-import { getAllComments, createComments, destroyMural, destroyComment } from '../api/fetch';
+import { getAllComments, createComments, destroyMural } from '../api/fetch';
 
 
 const MuralInfo = ({ allMurals }) => {
