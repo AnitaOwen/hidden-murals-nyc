@@ -33,29 +33,22 @@ export function createComments(comment) {
   });
 }
 
-// Create Mural
-
-// export function createMural(mural) {
-//   const options = {
-//     method: "POST",
-//     body: JSON.stringify(mural),
-//     headers: { "Content-Type": "application/json" },
-//   };
-//   return fetch(`${URL}/murals/`, options).then((response) => {
-//     return response.json();
-//   });
-// }
-
 // Update
-// export function updateMural(id, mural) {
-//   const options = {
-//     method: "PUT",
-//     body: JSON.stringify(mural),
-//     headers: { "Content-Type": "application/json" },
-//   };
-//   return fetch(`${URL}/mural/${id}`, options).then((response) => {
-//     return response.json();
-//   });
+export function editMural(id, updateMural) {
+  const options = {
+    method: "PUT",
+    body: JSON.stringify(updateMural),
+    headers: { "Content-Type": "application/json" },
+  };
+  return fetch(`${URL}/murals/${id}`, options).then((response) => {
+    return response.json();
+  });
+}
+
+// Show / Get one mural
+export function getOneMural(id) {
+  return fetch(`${URL}/murals/${id}`).then((response) => response.json());
+}
 
 // Delete
 export function destroyMural(id) {

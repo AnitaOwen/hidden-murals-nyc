@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import"./MuralInfo.css"
 import { getAllComments, createComments, destroyMural, destroyComment } from '../api/fetch';
 
 
 const MuralInfo = ({ allMurals }) => {
+  const navigate = useNavigate()
   //USEPARAMS
   const { id } = useParams();
   //USESTATES
@@ -12,6 +14,7 @@ const MuralInfo = ({ allMurals }) => {
   const [allComments, setAllComments] = useState([])
   const [commentInput, setCommentInput] = useState({ author: "", text: "" });
   // const [notes, setNotes] = useState([])
+
   //useeffect to find mural
   useEffect(() => {
     const matchingMural = allMurals.find((mural) => mural.id === parseInt(id));
@@ -53,6 +56,11 @@ const MuralInfo = ({ allMurals }) => {
     });
   }
 
+  // handle Update button click
+  function handleUpdateClick(){
+    navigate(`/mural/${id}/update`)
+  }
+
   // MURAL DELETE FUNCTION
   const handleDelete = () => {
     destroyMural(mural.id)
@@ -75,78 +83,88 @@ const MuralInfo = ({ allMurals }) => {
 
 
   return (
-    <div className="container">
-      <Link to="/">
-        <h1>Home</h1>
-      </Link>
-      <Link to="/murals">
-        <h1>All Murals</h1>
-      </Link>
+    <div className="info-parent-container">
+      <div className="top-links">
+        <Link to="/">
+          <h1>Home</h1>
+        </Link>
+        <Link to="/murals">
+          <h1>All Murals</h1>
+        </Link>
+      </div>
 
-      {mural ? (
-        <div>
-          <h1>Art Details</h1>
-          <img src={mural.image} alt={mural.title} />
-          <h2>
-            {mural.title} by {mural.artist}
-          </h2>
-          <ul>
-            <li> <span>Location:</span> {mural.location.neighborhood}, {mural.location.borough}</li>
-            <li> <span>Between:</span> {mural.location.intersection}</li>
-            <li> <span>Year:</span> {mural.year}</li>
-            <h3>Description: {mural.description}</h3>
-          </ul>
+      <div className="two-columns">
+        {mural ? (
+            <div classname="info-container">
+              <img src={mural.image} alt={mural.title} className="mural-image"/>
+              <h2>
+                "{mural.title}" by <span className="artist">{mural.artist}</span>
+              </h2>
+              <ul>
+                <li className="list-item"><span className="key">Location:</span> {mural.location.neighborhood}, {mural.location.borough}</li>
+                <li className="list-item"><span className="key">Intersection:</span> {mural.location.intersection}</li>
+                <li className="list-item"><span className="key">Year:</span> {mural.year}</li>
+                <li className="list-item"><span className="key">Description:</span> {mural.description}</li>
+              </ul>
+        
+
+
+              {/* Update Form button */}
+              <button onClick={handleUpdateClick}>Edit Mural Details</button>
+          </div> 
+          ) : (
+            <p>Mural not found</p>
+          )}
 
           {/* Delete button */}
           <button onClick={handleDelete}>Delete Mural</button>
 
           {/* Comments Section */}
-
           <section>
-            <br />
-            <h3>Comment Section</h3>
-            <ul>
-              {matchingComments.map((comment) => (
-                <li key={comment.id}>
-                  <strong>{comment.author}:</strong> {comment.text}
-                  <button onClick={() => handleCommentDelete(comment.id)}>Delete</button>
-                </li>
-              ))}
-            </ul>
+            <div className="all-comments">
+              <h3>Comments</h3>
+              <ul>
+                {matchingComments.map((comment) => (
+                  <li key={comment.id} className="list-item comments">
+                    <span className="author-key">{comment.author}:</span> {comment.text}
+                    <button onClick={() => handleCommentDelete(comment.id)}>Delete</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
 
             <form onSubmit={handleSubmit}>
               <label>
-                <h3>
-                  Author:
-                </h3>
+                <h4>Add a comment</h4>
                 <input
+                  placeholder="Enter Name"
                   name="author"
                   value={commentInput.author}
                   onChange={handleTextChange}
+                  className="author-input"
                   required
-                />
+                  />
               </label>
 
               <label>
-                <h3>
-                  Comment:
-                </h3>
                 <input
+                  placeholder="Enter Comment"
                   name="text"
                   value={commentInput.text}
                   onChange={handleTextChange}
+                  className="comment-input"
                   required
                 />
               </label>
-              <button type="submit">Submit</button>
+              <div>
+                <button type="submit">Submit Comment</button>
+              </div>
             </form>
           </section>
         </div>
-      ) : (
-        <p>Mural not found</p>
-      )}
     </div>
+
   );
 };
 
