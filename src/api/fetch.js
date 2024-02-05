@@ -51,12 +51,15 @@ export function getOneMural(id) {
 }
 
 // Delete
-// export function destroyMural(id) {
-//   const options = { method: "DELETE" };
-//   return fetch(`${URL}/murals/${id}`, options);
-// }
+export function destroyMural(id) {
+  const options = { method: "DELETE" };
+  return fetch(`${URL}/murals/${id}`, options);
+}
 
-// Show/Get one
-// export function getOne(id) {
-//   return fetch(`${URL}/shows/${id}`).then((response) => response.json());
-// }
+// Delete
+export function destroyComment(id) {
+  const options = { method: "DELETE" };
+  return fetch(`${URL}/comments/${id}`, options);
+}
+
+

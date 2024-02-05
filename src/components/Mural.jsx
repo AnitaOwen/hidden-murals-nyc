@@ -1,5 +1,5 @@
-
 import { Link } from 'react-router-dom'
+import "./Mural.css"
 
 const Mural = ({mural}) => {
   return (
@@ -10,6 +10,7 @@ const Mural = ({mural}) => {
             "{mural.title}" by {mural.artist} 
           </h2>
         </Link>
+        
     </div>
   )
 }

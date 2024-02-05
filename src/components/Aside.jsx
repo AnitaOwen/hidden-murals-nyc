@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Aside.css"
 
 const Aside = ({ handleBoroughClick, allMurals }) => {
   const boroughs = [
@@ -10,22 +11,37 @@ const Aside = ({ handleBoroughClick, allMurals }) => {
   ]
 
   return (
-    <aside>
-      <ul>
-        <li onClick={()=>handleBoroughClick("")}>
-          <Link to="/murals" >All Murals</Link>
+    <div className="sidenav">
+      <h3 className="sidenav-logo">Hidden Murals</h3>
+      <div className="sidenav-buttons">
+        <ul>
+
+          <li>
+            <div onClick={() => handleBoroughClick("")}>
+              <Link to="/murals" >All Murals</Link>
+            </div>
+          </li>
+          {boroughs.map((boro) => {
+            const formattedBoro = boro.split(" ").join("").toLowerCase()
+            return (
+              <li key={boro}
+              className="sidenav-buttons" onClick={() => handleBoroughClick(boro)}>
+                <Link to={`/murals/${formattedBoro}`}>{boro}  </Link>
+              </li>
+            )
+          })}
+        <li className="sidenav-buttons" >
+          <Link to="/">
+            <p>Home</p>
+          </Link>
         </li>
 
-        {boroughs.map((boro) => {
-          const formattedBoro = boro.split(" ").join("").toLowerCase()
-          return(
-            <li key={boro} 
-            onClick={()=>handleBoroughClick(boro)}>
-            <Link to={`/murals/${formattedBoro}`}>{boro} </Link>
-            </li>
-          )})}
-      </ul>
-    </aside>
+        </ul>
+
+
+      </div>
+    </div>
+
   )
 }
 

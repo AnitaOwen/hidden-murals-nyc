@@ -6,9 +6,8 @@ const About = () => {
       <h2>About The Developers</h2>
       <body>
         <div id="about">
-          <h4>About</h4>
-          <ul className="socials">
-            <li>
+           <ul className="socials">
+            <ul>
               <strong>Armando Pires</strong>
               <br />
               GitHub:{" "}
@@ -21,8 +20,8 @@ const About = () => {
               </a>
               <br />
               Fun Fact: Visited 7 national parks.
-            </li>
-            <li>
+            </ul>
+            <ul>
               <strong>Anita Owen</strong>
               <br />
               GitHub:{" "}
@@ -31,8 +30,8 @@ const About = () => {
               </a>
               <br />
               Fun Fact: Been a DJ for 18 years.
-            </li>
-            <li>
+            </ul>
+            <ul>
               <strong>Jazon Younge</strong>
               <br />
               GitHub:{" "}
@@ -41,7 +40,7 @@ const About = () => {
               </a>
               <br />
               Fun Fact: I can draw pretty good :D
-            </li>
+            </ul>
           </ul>
         </div>
       </body>

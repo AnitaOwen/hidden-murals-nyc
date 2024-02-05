@@ -1,0 +1,35 @@
+/* Mural.css */
+
+.mural {
+    /* margin-left: 250px; */
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    height: 250px;
+     /* Set a fixed height */
+    padding: 4px
+  }
+  
+  .mural img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 8px;
+  }
+  
+  .mural h2 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    margin: 0;
+    color: white;
+    font-size: 16px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Optional: Add hover effect */
+  .mural:hover img {
+    filter: brightness(80%);
+  }
+  
+  

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
-import { getAllComments, createComments} from '../api/fetch';
 import"./MuralInfo.css"
+import { getAllComments, createComments, destroyMural, destroyComment } from '../api/fetch';
+
 
 const MuralInfo = ({ allMurals }) => {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ const MuralInfo = ({ allMurals }) => {
   //USESTATES
   const [mural, setMural] = useState(null)
   const [allComments, setAllComments] = useState([])
-  const [commentInput, setCommentInput] = useState({ author: "", text: ""});
+  const [commentInput, setCommentInput] = useState({ author: "", text: "" });
   // const [notes, setNotes] = useState([])
 
   //useeffect to find mural
@@ -19,29 +20,28 @@ const MuralInfo = ({ allMurals }) => {
     const matchingMural = allMurals.find((mural) => mural.id === parseInt(id));
     setMural(matchingMural);
   }, [id, allMurals]);
-  
-  // useeffect to find comments
+
+  // USEEFFECT TO FIND COMMENTS
   useEffect(() => {
     getAllComments()
-    .then((data) => {
-      console.log(data);
-      setAllComments(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((data) => {
+        console.log(data);
+        setAllComments(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
-  
+
   const matchingComments = allComments.filter((comment) => comment.muralId === parseInt(id));
-  
-  
+
+
   // HANDLE FORM SUBMIT
   function handleSubmit(event) {
     event.preventDefault();
     // PREPARE THE COMMENT DATA
     createComments({ ...commentInput, muralId: parseInt(id) })
       .then((response) => {
-        // Handle success if needed
         console.log("Comment submitted successfully", response);
         // Update the state or perform other actions as needed
         setAllComments([...allComments, response]);
@@ -60,6 +60,27 @@ const MuralInfo = ({ allMurals }) => {
   function handleUpdateClick(){
     navigate(`/mural/${id}/update`)
   }
+
+  // MURAL DELETE FUNCTION
+  const handleDelete = () => {
+    destroyMural(mural.id)
+      .then(() => {
+        console.log("Mural deleted successfully");
+      })
+      .catch((error) => console.error(error));
+  };
+
+  // COMMENT DELETE FUNCTION
+  const handleCommentDelete = (commentId) => {
+    destroyComment(commentId)
+      .then(() => {
+        console.log("Comment deleted successfully");
+        const updatedComments = allComments.filter(comment => comment.id !== commentId);
+        setAllComments(updatedComments);
+      })
+      .catch((error) => console.error(error));
+  };
+
 
   return (
     <div className="info-parent-container">
@@ -87,12 +108,16 @@ const MuralInfo = ({ allMurals }) => {
               </ul>
         
 
+
               {/* Update Form button */}
               <button onClick={handleUpdateClick}>Edit Mural Details</button>
           </div> 
           ) : (
             <p>Mural not found</p>
           )}
+
+          {/* Delete button */}
+          <button onClick={handleDelete}>Delete Mural</button>
 
           {/* Comments Section */}
           <section>
@@ -102,6 +127,7 @@ const MuralInfo = ({ allMurals }) => {
                 {matchingComments.map((comment) => (
                   <li key={comment.id} className="list-item comments">
                     <span className="author-key">{comment.author}:</span> {comment.text}
+                    <button onClick={() => handleCommentDelete(comment.id)}>Delete</button>
                   </li>
                 ))}
               </ul>

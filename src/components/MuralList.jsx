@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Mural from "./Mural";
 import Aside from "./Aside";
+import "./MuralList.css"
+import { Link } from "react-router-dom";
 
 const MuralList = ({ allMurals }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -43,10 +45,15 @@ const MuralList = ({ allMurals }) => {
   return (
     <>
       <Aside handleBoroughClick={handleBoroughClick} />
-      <div>
-        <form>
+      <div className="header">
+         <button className="header-buttons">
+          <Link to="/mural/new">
+            <p>New Post</p>
+          </Link>
+        </button>
+
+        <form className="search-input">
           <label htmlFor="searchInput">Search all murals: </label>
-          {/* <div> */}
           <input
             placeholder="enter search term"
             type="search"
@@ -54,7 +61,6 @@ const MuralList = ({ allMurals }) => {
             onChange={handleTextChange}
             value={searchInput}
           />
-          {/* </div> */}
         </form>
       </div>
       <main>
