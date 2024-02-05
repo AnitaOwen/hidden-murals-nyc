@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import UploadWidget from "./UploadWidget";
 
 // import { useNavigate } from "react-router-dom";
 import { createMural } from "../api/fetch";
@@ -54,26 +55,11 @@ function MuralForm() {
       });
     }
   }
-  function imageUploader() {
-    const [file, setFile] = useState();
-    function handleChange(e) {
-      console.log(e.target.files);
-      setFile(URL.createObjectURL(e.target.files[0]));
-    }
-
-    return (
-      <div className="App">
-        <h2>Add Image:</h2>
-        <input type="file" onChange={handleChange} />
-        <img src={file} />
-      </div>
-    );
-  }
   //rendering
   return (
     <form onSubmit={handleSubmit}>
+      <UploadWidget/>
       <div>
-        <div>{imageUploader()}</div>
         <div>
           <label htmlFor="artist">Artist:</label>
         </div>
