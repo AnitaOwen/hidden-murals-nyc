@@ -88,7 +88,7 @@ const MuralInfo = ({ allMurals }) => {
         
 
               {/* Update Form button */}
-              <button onClick={handleUpdateClick}>Update mural information</button>
+              <button onClick={handleUpdateClick}>Edit Mural Details</button>
           </div> 
           ) : (
             <p>Mural not found</p>
