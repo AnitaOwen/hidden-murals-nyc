@@ -54,7 +54,7 @@ function MuralForm() {
       });
     }
   }
-  function imageUploader() {
+  function imagePreview() {
     const [file, setFile] = useState();
     function handleChange(e) {
       console.log(e.target.files);
@@ -73,7 +73,7 @@ function MuralForm() {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <div>{imageUploader()}</div>
+        <div>{imagePreview()}</div>
         <div>
           <label htmlFor="artist">Artist:</label>
         </div>
