@@ -1,4 +1,6 @@
-
+a{
+    text-decoration: none;
+}
 
 button{
     margin: 8px;
@@ -83,3 +85,16 @@ ul{
 .info-parent-container{
     margin-left: 15px;
 }
+.top-links p{
+    font-size: 26px;
+    border: 2px solid red;
+    width: 10%;
+
+.top-links {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+    padding: 15px 0;
+    margin-left: 15px;
+  }
+

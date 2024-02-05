@@ -55,6 +55,7 @@ function MuralForm() {
       });
     }
   }
+
   //rendering
   return (
     <form onSubmit={handleSubmit}>
