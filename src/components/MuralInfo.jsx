@@ -111,13 +111,13 @@ const MuralInfo = ({ allMurals }) => {
 
               {/* Update Form button */}
               <button onClick={handleUpdateClick}>Edit Mural Details</button>
+              <button onClick={handleDelete}>Delete Mural</button>
           </div> 
           ) : (
             <p>Mural not found</p>
           )}
 
-          {/* Delete button */}
-          <button onClick={handleDelete}>Delete Mural</button>
+         
 
           {/* Comments Section */}
           <section>
