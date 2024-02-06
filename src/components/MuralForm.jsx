@@ -2,10 +2,11 @@ import React from "react";
 import { useState } from "react";
 import UploadWidget from "./UploadWidget";
 
-// import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createMural } from "../api/fetch";
 
 function MuralForm() {
+  const navigate = useNavigate();
 
   const [newMural, setNewMural] = useState({
     image: "",
@@ -26,18 +27,16 @@ function MuralForm() {
     })
   }
 
-  //   const navigate = useNavigate();
   function handleSubmit(event) {
     event.preventDefault();
     createMural(newMural)
       .then((response) => {
-        console.log("SUCCESS!!");
+        navigate("/murals")
       })
       .catch((error) => {
         console.error(error);
-      });
+      })
   }
-  console.log("test");
 
   function handleTextChange(event) {
     const inputId = event.target.id;
@@ -66,105 +65,112 @@ function MuralForm() {
 
   //rendering
   return (
-    <form onSubmit={handleSubmit}>
-      <UploadWidget setImageURL={setImageURL}/>
-      <div>
-        <div>
-          <label htmlFor="artist">Artist:</label>
-        </div>
-
-        <input
-          type="text"
-          id="artist"
-          value={newMural.artist}
-          onChange={handleTextChange}
-        />
-        <div></div>
-        <div>
-          <label htmlFor="title">Title:</label>
-        </div>
-
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={newMural.title}
-          onChange={handleTextChange}
-        />
+    <>
+      <div className="go-back">
+        <Link to="/murals">
+          {`<<< Go Back`}
+        </Link>
       </div>
-
-      <div>
+      <form onSubmit={handleSubmit}>
+        <UploadWidget setImageURL={setImageURL}/>
         <div>
-          <label htmlFor="neighborhood">Neighborhood:</label>
-        </div>
-        <input
-          type="text"
-          id="location.neighborhood"
-          value={newMural.location.neighborhood}
-          required
-          onChange={handleTextChange}
-        />
-      </div>
+          <div>
+            <label htmlFor="artist">Artist:</label>
+          </div>
 
-      <div>
+          <input
+            type="text"
+            id="artist"
+            value={newMural.artist}
+            onChange={handleTextChange}
+          />
+          <div></div>
+          <div>
+            <label htmlFor="title">Title:</label>
+          </div>
+
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={newMural.title}
+            onChange={handleTextChange}
+          />
+        </div>
+
         <div>
-          <label htmlFor="borough">Borough:</label>
+          <div>
+            <label htmlFor="neighborhood">Neighborhood:</label>
+          </div>
+          <input
+            type="text"
+            id="location.neighborhood"
+            value={newMural.location.neighborhood}
+            required
+            onChange={handleTextChange}
+          />
         </div>
-        <select
-          id="location.borough"
-          name="borough"
-          value={newMural.location.borough}
-          required
-          onChange={handleTextChange}
-        >
-          <option value="Manhattan">Manhattan</option>
-          <option value="Brooklyn">Brooklyn</option>
-          <option value="Queens">Queens</option>
-          <option value="Bronx">Bronx</option>
-          <option value="Staten Island">Staten Island</option>
-        </select>
-      </div>
 
-      <div>
         <div>
-          <label htmlFor="intersection">Intersection:</label>
+          <div>
+            <label htmlFor="borough">Borough:</label>
+          </div>
+          <select
+            id="location.borough"
+            name="borough"
+            value={newMural.location.borough}
+            required
+            onChange={handleTextChange}
+          >
+            <option value="Manhattan">Manhattan</option>
+            <option value="Brooklyn">Brooklyn</option>
+            <option value="Queens">Queens</option>
+            <option value="Bronx">Bronx</option>
+            <option value="Staten Island">Staten Island</option>
+          </select>
         </div>
-        <input
-          type="text"
-          id="location.intersection"
-          value={newMural.location.intersection}
-          required
-          onChange={handleTextChange}
-        />
-      </div>
 
-      <div>
         <div>
-          <label htmlFor="year">Year:</label>
+          <div>
+            <label htmlFor="intersection">Intersection:</label>
+          </div>
+          <input
+            type="text"
+            id="location.intersection"
+            value={newMural.location.intersection}
+            required
+            onChange={handleTextChange}
+          />
         </div>
-        <input
-          type="text"
-          id="year"
-          value={newMural.year}
-          onChange={handleTextChange}
-        />
-      </div>
 
-      <div>
         <div>
-          <label htmlFor="description">Description:</label>
+          <div>
+            <label htmlFor="year">Year:</label>
+          </div>
+          <input
+            type="text"
+            id="year"
+            value={newMural.year}
+            onChange={handleTextChange}
+          />
         </div>
-        <input
-          type="text"
-          id="description"
-          value={newMural.description}
-          required
-          onChange={handleTextChange}
-        />
-      </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <div>
+          <div>
+            <label htmlFor="description">Description:</label>
+          </div>
+          <input
+            type="text"
+            id="description"
+            value={newMural.description}
+            required
+            onChange={handleTextChange}
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 }
 
