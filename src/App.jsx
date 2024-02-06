@@ -36,7 +36,11 @@ function App () {
     const remainingMurals = allMurals.filter((singleMural) => singleMural.id !== muralId)
     setAllMurals(remainingMurals)
   }
-  
+
+  function getNewList(response){
+    setAllMurals([response, ...allMurals])
+  }
+
   return (
     // <div className={isDarkMode ? "dark-mode" : "light-mode"}>
     <>
@@ -44,7 +48,7 @@ function App () {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
     
-        <Route path="mural/new" element={<MuralForm />} />
+        <Route path="mural/new" element={<MuralForm getNewList={getNewList} />} />
           
 
         <Route path="/murals">

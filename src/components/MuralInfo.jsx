@@ -65,7 +65,7 @@ const MuralInfo = ({ allMurals, getRemainingMurals }) => {
   const handleDelete = () => {
     destroyMural(mural.id)
       .then(() => {
-        // Update the state to remove the deleted mural
+        // Update the allMurals state to remove the deleted mural
         getRemainingMurals(mural.id)
         alert("Mural deleted successfully")
         navigate("/murals")

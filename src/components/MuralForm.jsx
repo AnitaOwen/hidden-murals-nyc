@@ -5,7 +5,7 @@ import UploadWidget from "./UploadWidget";
 import { Link, useNavigate } from "react-router-dom";
 import { createMural } from "../api/fetch";
 
-function MuralForm() {
+function MuralForm({getNewList}) {
   const navigate = useNavigate();
 
   const [newMural, setNewMural] = useState({
@@ -36,6 +36,8 @@ function MuralForm() {
     } else {
       createMural(newMural)
         .then((response) => {
+          // Update the state to include the newly created mural
+          getNewList(response)
           navigate("/murals")
         })
         .catch((error) => {
