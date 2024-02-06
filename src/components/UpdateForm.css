@@ -3,13 +3,16 @@ form{
     text-align: center;
 }
 label{
-    color:rgb(3, 71, 168)
+    color:rgb(3, 71, 168);
+    font-size: 18px;
 }
 input{
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding: 5px 0px;
     width: 60%;
     text-align: center;
+    height: 28px;
+    font-size: 18px;
+    margin-top: 3px;
 }
 
 .label-input{
@@ -24,6 +27,6 @@ input{
 }
 
 .large-image{
-    width:70%;
+    width:50%;
     height: auto;
 }
