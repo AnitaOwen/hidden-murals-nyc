@@ -33,3 +33,14 @@ main {
     padding: 25px 0;
     margin-bottom: 20px;
 }
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr 1fr; 
+        margin-left: 0;
+        position: relative; 
+        padding-left: 20px;
+        padding-bottom: 20px; 
+    }
+}

@@ -6,14 +6,13 @@
     cursor: pointer;
     overflow: hidden;
     height: 250px;
-     /* Set a fixed height */
     padding: 4px
   }
   
   .mural img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    object-fit: cover; 
     border-radius: 8px;
   }
   
@@ -22,12 +21,12 @@
     bottom: 10px;
     left: 10px;
     margin: 0;
-    color: white;
-    font-size: 16px;
+    color: #1eedf1;
+    font-size: 18px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
-  /* Optional: Add hover effect */
+
   .mural:hover img {
     filter: brightness(80%);
   }
