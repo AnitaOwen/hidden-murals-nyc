@@ -18,6 +18,9 @@ main {
 
 .go-back{
     margin: 20px;
+    width: 120px;
+    padding: 8px 8px;
+    background: rgb(253, 241, 109);
 }
 
 .image-indicator-green{

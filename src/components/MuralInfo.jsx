@@ -5,7 +5,7 @@ import"./MuralInfo.css"
 import { getAllComments, createComments, destroyMural } from '../api/fetch';
 
 
-const MuralInfo = ({ allMurals }) => {
+const MuralInfo = ({ allMurals, getRemainingMurals }) => {
   const navigate = useNavigate()
   //USEPARAMS
   const { id } = useParams();
@@ -65,6 +65,8 @@ const MuralInfo = ({ allMurals }) => {
   const handleDelete = () => {
     destroyMural(mural.id)
       .then(() => {
+        // Update the state to remove the deleted mural
+        getRemainingMurals(mural.id)
         alert("Mural deleted successfully")
         navigate("/murals")
       })
@@ -126,17 +128,19 @@ const MuralInfo = ({ allMurals }) => {
 
           {/* Comments Section */}
           <section>
-            <div className="all-comments">
-              <h3>Comments</h3>
-              <ul>
-                {matchingComments.map((comment) => (
-                  <li key={comment.id} className="list-item comments">
-                    <span className="author-key">{comment.author}:</span> {comment.text}
-                    {/* <button onClick={() => handleCommentDelete(comment.id)}>Delete</button> */}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {mural && (
+              <div className="all-comments">
+                <h3>Comments</h3>
+                <ul>
+                  {matchingComments.map((comment) => (
+                    <li key={comment.id} className="list-item comments">
+                      <span className="author-key">{comment.author}:</span> {comment.text}
+                      {/* <button onClick={() => handleCommentDelete(comment.id)}>Delete</button> */}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
 
             <form onSubmit={handleSubmit}>
