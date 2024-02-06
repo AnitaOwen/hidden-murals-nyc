@@ -44,9 +44,6 @@ function MuralForm() {
     }
   }
 
-  function formatInputValue(value) {
-    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-  }
 
   function handleTextChange(event) {
     const inputId = event.target.id;
@@ -86,12 +83,17 @@ function MuralForm() {
         <UploadWidget setImageURL={setImageURL}/>
 
         {/* Display a message if an image is present */}
-        {newMural.image && (
-          <div className="image-indicator">
+        {newMural.image ? (
+          <div className="image-indicator-green">
             Image added successfully!
           </div>
+        ) : (
+          <div className="image-indicator-red">
+            Select an image to upload.
+          </div>
         )}
-        <div>
+
+        <div className="label-input">
           <div>
             <label htmlFor="artist">Artist:</label>
           </div>
@@ -102,11 +104,12 @@ function MuralForm() {
             value={newMural.artist}
             onChange={handleTextChange}
           />
-          <div></div>
+        </div>
+
+        <div className="label-input">
           <div>
             <label htmlFor="title">Title:</label>
           </div>
-
           <input
             type="text"
             id="title"
@@ -116,7 +119,8 @@ function MuralForm() {
           />
         </div>
 
-        <div>
+
+        <div className="label-input">
           <div>
             <label htmlFor="neighborhood">Neighborhood:</label>
           </div>
@@ -129,7 +133,7 @@ function MuralForm() {
           />
         </div>
 
-        <div>
+        <div className="label-input">
           <div>
             <label htmlFor="borough">Borough:</label>
           </div>
@@ -148,7 +152,7 @@ function MuralForm() {
           </select>
         </div>
 
-        <div>
+        <div className="label-input">
           <div>
             <label htmlFor="intersection">Intersection:</label>
           </div>
@@ -161,7 +165,7 @@ function MuralForm() {
           />
         </div>
 
-        <div>
+        <div className="label-input">
           <div>
             <label htmlFor="year">Year:</label>
           </div>
@@ -173,7 +177,7 @@ function MuralForm() {
           />
         </div>
 
-        <div>
+        <div className="label-input">
           <div>
             <label htmlFor="description">Description:</label>
           </div>

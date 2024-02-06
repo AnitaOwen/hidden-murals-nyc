@@ -20,8 +20,13 @@ main {
     margin: 20px;
 }
 
-.image-indicator{
-    background: rgb(180, 245, 180);
-    padding: 15px 0;
+.image-indicator-green{
+    background: rgb(217, 251, 217);
+    padding: 25px 0;
+    margin-bottom: 20px;
+}
+.image-indicator-red{
+    background: rgb(254, 227, 227);
+    padding: 25px 0;
     margin-bottom: 20px;
 }
