@@ -55,7 +55,7 @@ const MuralList = ({ allMurals }) => {
         <form className="search-input">
           <label htmlFor="searchInput">Search all murals: </label>
           <input
-            placeholder="enter search term"
+            placeholder="enter any search term"
             type="search"
             id="searchInput"
             onChange={handleTextChange}
@@ -65,10 +65,10 @@ const MuralList = ({ allMurals }) => {
       </div>
       <main>
         {searchInput.length > 0
-          ? searchResults.map((mural) => <Mural key={mural.id} mural={mural} />)
+          ? searchResults.map((mural) => <Mural key={mural.id} mural={mural} />).reverse()
           : filteredBorough.map((mural) => (
               <Mural key={mural.id} mural={mural} />
-            ))}
+            )).reverse()}
       </main>
     </>
   );
