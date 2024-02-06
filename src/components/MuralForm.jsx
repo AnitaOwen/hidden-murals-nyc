@@ -29,13 +29,18 @@ function MuralForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createMural(newMural)
-      .then((response) => {
-        navigate("/murals")
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    if (!newMural.image) {
+      // Display an alert to the user if the image is not provided
+      window.alert("Please upload an image before submitting the form.")
+    } else {
+      createMural(newMural)
+        .then((response) => {
+          navigate("/murals")
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+    }
   }
 
   function handleTextChange(event) {
