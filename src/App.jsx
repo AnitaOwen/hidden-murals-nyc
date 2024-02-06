@@ -31,7 +31,16 @@ function App () {
         console.error(error);
       });
   }, []);
-  
+
+  function getRemainingMurals(muralId){
+    const remainingMurals = allMurals.filter((singleMural) => singleMural.id !== muralId)
+    setAllMurals(remainingMurals)
+  }
+
+  function getNewList(response){
+    setAllMurals([response, ...allMurals])
+  }
+
   return (
     // <div className={isDarkMode ? "dark-mode" : "light-mode"}>
     <>
@@ -39,7 +48,7 @@ function App () {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
     
-        <Route path="mural/new" element={<MuralForm />} />
+        <Route path="mural/new" element={<MuralForm getNewList={getNewList} />} />
           
 
         <Route path="/murals">
@@ -52,7 +61,7 @@ function App () {
         <Route path="/mural/:id/update" element={<UpdateForm />} /> */}
 
         <Route path="/mural/:id">
-          <Route index element={<MuralInfo allMurals={allMurals} allComments={allComments} />} />
+          <Route index element={<MuralInfo getRemainingMurals={getRemainingMurals} allMurals={allMurals} allComments={allComments} />} />
           <Route path="update" element={<UpdateForm />} />
         </Route>
     

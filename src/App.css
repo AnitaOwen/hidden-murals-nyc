@@ -8,3 +8,28 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
     margin-left: 300px;
 }
+
+.add-image-button{
+    background: rgb(174, 227, 255);
+    padding: 10px 20px;
+    /* width: 150px; */
+    margin: 25px;
+}
+
+.go-back{
+    margin: 20px;
+    width: 120px;
+    padding: 8px 8px;
+    background: rgb(253, 241, 109);
+}
+
+.image-indicator-green{
+    background: rgb(217, 251, 217);
+    padding: 25px 0;
+    margin-bottom: 20px;
+}
+.image-indicator-red{
+    background: rgb(254, 227, 227);
+    padding: 25px 0;
+    margin-bottom: 20px;
+}

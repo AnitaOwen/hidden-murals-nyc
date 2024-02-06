@@ -5,7 +5,7 @@ import"./MuralInfo.css"
 import { getAllComments, createComments, destroyMural } from '../api/fetch';
 
 
-const MuralInfo = ({ allMurals }) => {
+const MuralInfo = ({ allMurals, getRemainingMurals }) => {
   const navigate = useNavigate()
   //USEPARAMS
   const { id } = useParams();
@@ -65,9 +65,15 @@ const MuralInfo = ({ allMurals }) => {
   const handleDelete = () => {
     destroyMural(mural.id)
       .then(() => {
-        console.log("Mural deleted successfully");
+        // Update the allMurals state to remove the deleted mural
+        getRemainingMurals(mural.id)
+        alert("Mural deleted successfully")
+        navigate("/murals")
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error("Error deleting mural", error);
+        alert("Failed to delete mural. Please try again.");
+      })
   };
 
   // COMMENT DELETE FUNCTION
@@ -84,15 +90,16 @@ const MuralInfo = ({ allMurals }) => {
 
   return (
     <div className="info-parent-container">
-      <div className="top-links">
-        <Link to="/">
-          <p>Home</p>
-        </Link>
+      <div className="go-back">
         <Link to="/murals">
-          <p>All Murals</p>
+          {`<<< Go Back`}
         </Link>
       </div>
-
+      {/* <div>
+      <Link to="/">
+          <h1>Hidden Murals</h1>
+        </Link>
+      </div> */}
       <div className="two-columns">
         {mural ? (
             <div classname="info-container">
@@ -121,17 +128,19 @@ const MuralInfo = ({ allMurals }) => {
 
           {/* Comments Section */}
           <section>
-            <div className="all-comments">
-              <h3>Comments</h3>
-              <ul>
-                {matchingComments.map((comment) => (
-                  <li key={comment.id} className="list-item comments">
-                    <span className="author-key">{comment.author}:</span> {comment.text}
-                    {/* <button onClick={() => handleCommentDelete(comment.id)}>Delete</button> */}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {mural && (
+              <div className="all-comments">
+                <h3>Comments</h3>
+                <ul>
+                  {matchingComments.map((comment) => (
+                    <li key={comment.id} className="list-item comments">
+                      <span className="author-key">{comment.author}:</span> {comment.text}
+                      {/* <button onClick={() => handleCommentDelete(comment.id)}>Delete</button> */}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
 
             <form onSubmit={handleSubmit}>
