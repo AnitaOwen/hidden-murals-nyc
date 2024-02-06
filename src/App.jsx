@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Home from "./components/Home";
 import MuralList from "./components/MuralList";
 import MuralInfo from "./components/MuralInfo";
-
 import MuralForm from "./components/MuralForm";
 import About from "./components/About";
 import UpdateForm from "./components/UpdateForm";
@@ -38,7 +37,7 @@ function App () {
   }
 
   function getNewList(response){
-    setAllMurals([response, ...allMurals])
+    setAllMurals([...allMurals, response ])
   }
 
   return (
