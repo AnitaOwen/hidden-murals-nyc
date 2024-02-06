@@ -12,7 +12,7 @@ button{
     transition: background-color 0.3s ease;
 }
 button:hover {
-    background-color: #98fb8b;
+    background-color: #d480c8;
   }
 
 form{

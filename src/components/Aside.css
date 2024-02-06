@@ -63,6 +63,28 @@
       display: grid;
       grid-template-rows: 1fr; 
   }
+
+  .sidenav-buttons {
+    margin-bottom: 10px;
+}
+
+.sidenav-buttons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; 
+  justify-content: space-between; 
+  width: 100%; 
+}
+.sidenav-buttons li {
+  margin: 10px 10px;
+}
+
+  .list-item-parent-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
   
   

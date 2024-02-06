@@ -21,7 +21,13 @@ main {
     width: 120px;
     padding: 8px 8px;
     background: rgb(253, 241, 109);
+    border-radius: 3px;
 }
+
+.go-back:hover {
+    background-color: #d480c8;
+    
+  }
 
 .image-indicator-green{
     background: rgb(217, 251, 217);

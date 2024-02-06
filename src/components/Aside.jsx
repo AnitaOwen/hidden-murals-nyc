@@ -15,30 +15,34 @@ const Aside = ({ handleBoroughClick, allMurals }) => {
       <Link to="/">
       <h3 className="sidenav-logo">Hidden Murals</h3>
       </Link>
-      <div className="sidenav-buttons">
-        <ul>
 
-          <li>
-            <div onClick={() => handleBoroughClick("")}>
-              <Link to="/murals" >All Murals</Link>
-            </div>
+      <div className="list-item-parent-container">
+        <div className="sidenav-buttons">
+          <ul>
+
+            <li>
+              <div onClick={() => handleBoroughClick("")}>
+                <Link to="/murals" >All Murals</Link>
+              </div>
+            </li>
+            {boroughs.map((boro) => {
+              const formattedBoro = boro.split(" ").join("").toLowerCase()
+              return (
+                <li key={boro}
+                className="sidenav-buttons" onClick={() => handleBoroughClick(boro)}>
+                  <Link to={`/murals/${formattedBoro}`}>{boro}  </Link>
+                </li>
+              )
+            })}
+          <li className="sidenav-buttons" >
           </li>
-          {boroughs.map((boro) => {
-            const formattedBoro = boro.split(" ").join("").toLowerCase()
-            return (
-              <li key={boro}
-              className="sidenav-buttons" onClick={() => handleBoroughClick(boro)}>
-                <Link to={`/murals/${formattedBoro}`}>{boro}  </Link>
-              </li>
-            )
-          })}
-        <li className="sidenav-buttons" >
-        </li>
 
-        </ul>
+          </ul>
 
 
+        </div>
       </div>
+
     </div>
 
   )
