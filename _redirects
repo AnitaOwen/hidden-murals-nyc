@@ -1,1 +1,22 @@
-/* /index.html 200
+# Redirects for React Router routes
+
+# Home page
+/                   /index.html       200
+
+# About page
+/about              /about/index.html 200
+
+# Mural new form
+/mural/new          /mural/new/index.html 200
+
+# Mural list (default route)
+/murals             /murals/index.html   200
+
+# Mural list by borough
+/murals/:borough    /murals/:borough/index.html   200
+
+# Mural info
+/mural/:id          /mural/:id/index.html   200
+
+# Update mural form
+/mural/:id/update   /mural/:id/update/index.html   200
