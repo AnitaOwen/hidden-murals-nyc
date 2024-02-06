@@ -84,15 +84,16 @@ const MuralInfo = ({ allMurals }) => {
 
   return (
     <div className="info-parent-container">
-      <div className="top-links">
-        <Link to="/">
-          <p>Home</p>
-        </Link>
+      <div className="go-back">
         <Link to="/murals">
-          <p>All Murals</p>
+          {`<<< Go Back`}
         </Link>
       </div>
-
+      {/* <div>
+      <Link to="/">
+          <h1>Hidden Murals</h1>
+        </Link>
+      </div> */}
       <div className="two-columns">
         {mural ? (
             <div classname="info-container">
