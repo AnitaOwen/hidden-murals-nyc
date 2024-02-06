@@ -65,9 +65,13 @@ const MuralInfo = ({ allMurals }) => {
   const handleDelete = () => {
     destroyMural(mural.id)
       .then(() => {
-        console.log("Mural deleted successfully");
+        alert("Mural deleted successfully")
+        navigate("/murals")
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error("Error deleting mural", error);
+        alert("Failed to delete mural. Please try again.");
+      })
   };
 
   // COMMENT DELETE FUNCTION
