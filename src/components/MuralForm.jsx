@@ -20,6 +20,7 @@ function MuralForm() {
     year: "",
     description: "",
   });
+
   function setImageURL(uploadedURL){
     setNewMural({
       ...newMural,
@@ -41,6 +42,10 @@ function MuralForm() {
           console.error(error);
         })
     }
+  }
+
+  function formatInputValue(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   }
 
   function handleTextChange(event) {
@@ -77,7 +82,15 @@ function MuralForm() {
         </Link>
       </div>
       <form onSubmit={handleSubmit}>
+        
         <UploadWidget setImageURL={setImageURL}/>
+
+        {/* Display a message if an image is present */}
+        {newMural.image && (
+          <div className="image-indicator">
+            Image added successfully!
+          </div>
+        )}
         <div>
           <div>
             <label htmlFor="artist">Artist:</label>
@@ -153,7 +166,7 @@ function MuralForm() {
             <label htmlFor="year">Year:</label>
           </div>
           <input
-            type="text"
+            type="number"
             id="year"
             value={newMural.year}
             onChange={handleTextChange}

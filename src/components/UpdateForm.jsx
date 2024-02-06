@@ -65,10 +65,12 @@ const UpdateForm = () => {
 
   return (
     <>
+      <div className="go-back">
+        <Link to={`/mural/${id}`}>
+          {`<<< Go Back`}
+        </Link>
+      </div>
       <form onSubmit={handleUpdateSubmit}>
-      <Link to={`/mural/${id}`}>
-            <p>Go Back</p>
-          </Link>
         <img className="large-image" src={updateMural.image} alt="Hidden Mural" />
         <div className="label-input">
           <div>

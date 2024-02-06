@@ -10,11 +10,18 @@ main {
 }
 
 .add-image-button{
-    background: rgb(230, 172, 191);
-    padding: 5px;
-    width: 150px;
+    background: rgb(174, 227, 255);
+    padding: 10px 20px;
+    /* width: 150px; */
+    margin: 25px;
 }
 
 .go-back{
     margin: 20px;
+}
+
+.image-indicator{
+    background: rgb(180, 245, 180);
+    padding: 15px 0;
+    margin-bottom: 20px;
 }
