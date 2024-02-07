@@ -23,7 +23,7 @@ function App () {
   useEffect(() => {
     getAllMurals()
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setAllMurals(data);
       })
       .catch((error) => {
