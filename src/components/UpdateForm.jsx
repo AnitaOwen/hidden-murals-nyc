@@ -156,7 +156,7 @@ const UpdateForm = () => {
           <div>
             <label htmlFor="description">Description:</label>
           </div>
-          <input
+          <textarea
             type="text"
             id="description"
             value={updateMural.description}

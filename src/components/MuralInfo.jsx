@@ -155,7 +155,7 @@ const MuralInfo = ({ allMurals, getRemainingMurals }) => {
               </label>
 
               <label>
-                <input
+                <textarea
                   placeholder="Enter Comment"
                   name="text"
                   value={commentInput.text}
