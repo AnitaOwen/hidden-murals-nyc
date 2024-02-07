@@ -117,7 +117,7 @@ const UpdateForm = () => {
           <select
             id="borough"
             name="borough"
-            value={updateMural.borough}
+            value={updateMural.location.borough}
             onChange={handleTextChange}
           >
             <option value="Manhattan">Manhattan</option>
