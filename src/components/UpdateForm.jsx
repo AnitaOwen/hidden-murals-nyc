@@ -7,6 +7,7 @@ const UpdateForm = () => {
 
   const navigate = useNavigate()
   const { id } = useParams()
+  const [submit, setSubmit] = useState(false)
 
   const [updateMural, setUpdateMural] = useState({
     image: "",
@@ -46,12 +47,22 @@ const UpdateForm = () => {
     event.preventDefault();
     editMural(id, updateMural)
       .then(() => {
-        navigate(`/mural/${id}`);
+        // Set submit to true when the form is submitted
+        // setSubmit(true)
+        navigate(`/mural/${id}`)
       })
       .catch((error) => {
         console.error(error);
       });
   }
+
+  // useEffect(() => {
+  //   if (submit) {
+  //     // Navigate to the updated mural page when submit becomes true
+  //     navigate(`/mural/${id}`);
+  //     setSubmit(false)
+  //   }
+  // }, [submit, id])
 
   useEffect(() => {
     getOneMural(id)
@@ -62,6 +73,8 @@ const UpdateForm = () => {
         console.error(error);
       });
   }, [id]);
+
+
 
   return (
     <>
