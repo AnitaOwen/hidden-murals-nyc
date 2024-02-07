@@ -11,14 +11,7 @@ import "./App.css";
 
 function App () {
   const [allMurals, setAllMurals] = useState ([])
-  const [allComments, setAllComments] = useState([])
-
-
-  // const [isDarkMode, setIsDarkMode] = useState(false)
-
-  // function toggleDarkMode(){
-  //   setIsDarkMode(!isDarkMode)
-  // }
+  const [allComments, setAllComments] = useState([])   
 
   useEffect(() => {
     getAllMurals()
@@ -41,7 +34,6 @@ function App () {
   }
 
   return (
-    // <div className={isDarkMode ? "dark-mode" : "light-mode"}>
     <>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -55,9 +47,6 @@ function App () {
             <Route path=":borough" element={<MuralList allMurals={allMurals} />} />
           </Route>
     
-        
-        {/* <Route path="/mural/:id" element={<MuralInfo allMurals={allMurals} allComments={allComments}/>} />
-        <Route path="/mural/:id/update" element={<UpdateForm />} /> */}
 
         <Route path="/mural/:id">
           <Route index element={<MuralInfo getRemainingMurals={getRemainingMurals} allMurals={allMurals} allComments={allComments} />} />
