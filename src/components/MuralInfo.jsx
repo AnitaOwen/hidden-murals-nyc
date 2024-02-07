@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import"./MuralInfo.css"
-import { getAllComments, createComments, destroyMural } from '../api/fetch';
+import { getAllComments, createComments, destroyMural, getOneMural } from '../api/fetch';
 
 
 const MuralInfo = ({ allMurals, getRemainingMurals }) => {
@@ -15,11 +15,22 @@ const MuralInfo = ({ allMurals, getRemainingMurals }) => {
   const [commentInput, setCommentInput] = useState({ author: "", text: "" });
   // const [notes, setNotes] = useState([])
 
-  //useeffect to find mural
+  
+  // useEffect(() => {
+  //   const matchingMural = allMurals.find((mural) => mural.id === parseInt(id));
+  //   setMural(matchingMural);
+  // }, [id, allMurals]);
+
+  // useEffect to find mural
   useEffect(() => {
-    const matchingMural = allMurals.find((mural) => mural.id === parseInt(id));
-    setMural(matchingMural);
-  }, [id, allMurals]);
+    getOneMural(id)
+      .then((response) => {
+        setMural(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   // USEEFFECT TO FIND COMMENTS
   useEffect(() => {
@@ -95,11 +106,6 @@ const MuralInfo = ({ allMurals, getRemainingMurals }) => {
           {`<<< Go Back`}
         </Link>
       </div>
-      {/* <div>
-      <Link to="/">
-          <h1>Hidden Murals</h1>
-        </Link>
-      </div> */}
       <div className="two-columns">
         {mural ? (
             <div classname="info-container">

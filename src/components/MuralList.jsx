@@ -1,14 +1,15 @@
 // import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import Mural from "./Mural";
 import Aside from "./Aside";
 import "./MuralList.css"
 import { Link } from "react-router-dom";
+import { getAllMurals } from "../api/fetch";
+
 
 const MuralList = ({ allMurals }) => {
   const [searchInput, setSearchInput] = useState("");
-
-  // const { borough } = useParams();
+  const [muralList, setMuralList] = useState(allMurals)
   const [selectedBorough, setSelectedBorough] = useState("");
 
   // Aside component boroughs onClick
@@ -18,8 +19,8 @@ const MuralList = ({ allMurals }) => {
   }
 
     // array of all mural objects that match the selectedBorough state or all murals.
-    const filteredBorough = selectedBorough ? allMurals.filter((mural) => mural.location.borough === selectedBorough) 
-    : allMurals
+    const filteredBorough = selectedBorough ? muralList.filter((mural) => mural.location.borough === selectedBorough) 
+    : muralList
     // console.log(filteredBorough)
 
   // Search bar text input
@@ -30,7 +31,7 @@ const MuralList = ({ allMurals }) => {
   
     // Filter murals based on search input
     function filteredSearchMurals(){
-      return allMurals.filter((mural)=> {
+      return muralList.filter((mural)=> {
         const {artist, location, title, year} = mural
         const artistMatch = artist?.toLowerCase().match(searchInput.toLowerCase())
         const neighborhoodMatch = location.neighborhood?.toLowerCase().match(searchInput.toLowerCase())
@@ -41,6 +42,16 @@ const MuralList = ({ allMurals }) => {
     })
   }
   const searchResults = filteredSearchMurals()
+
+  useEffect(() => {
+    getAllMurals()
+      .then((data) => {
+        setMuralList(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <>
