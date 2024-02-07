@@ -6,12 +6,21 @@ label{
     color:rgb(3, 71, 168);
     font-size: 18px;
 }
-input{
+input, textarea{
     padding: 5px 0px;
     width: 60%;
     text-align: center;
     height: 28px;
     font-size: 18px;
+    margin-top: 3px;
+}
+
+select{
+    padding: 3px 0px;
+    width: 20%;
+    text-align: center;
+    height: 32px;
+    font-size: 16px;
     margin-top: 3px;
 }
 
