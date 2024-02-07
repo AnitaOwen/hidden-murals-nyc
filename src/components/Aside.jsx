@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Aside.css"
 
-const Aside = ({ handleBoroughClick, allMurals }) => {
+const Aside = ({ handleBoroughClick}) => {
   const boroughs = [
     'Bronx',
     'Brooklyn',

@@ -22,22 +22,22 @@ const UpdateForm = () => {
   })
 
   function handleTextChange(event) {
-    const { id, value } = event.target;
+    const inputId = event.target.id;
   
     // If the property is nested (e.g., "location.neighborhood")
-    if (id.includes('location')) {
-      const locationValue = id.split('.')[1];
+    if (inputId.includes('location')) {
+      const newKey = inputId.replace("location.", "");
       setUpdateMural({
         ...updateMural,
         location: {
           ...updateMural.location,
-          [locationValue]: value,
+          [newKey]: event.target.value,
         },
       });
     } else {
       setUpdateMural({
         ...updateMural,
-        [id]: value,
+        [inputId]: event.target.value,
       });
     }
   }
@@ -104,7 +104,7 @@ const UpdateForm = () => {
           </div>
           <input
             type="text"
-            id="neighborhood"
+            id="location.neighborhood"
             value={updateMural.location.neighborhood}
             onChange={handleTextChange}
           />
@@ -115,7 +115,7 @@ const UpdateForm = () => {
             <label htmlFor="borough">Borough:</label>
           </div>
           <select
-            id="borough"
+            id="location.borough"
             name="borough"
             value={updateMural.location.borough}
             onChange={handleTextChange}
@@ -134,7 +134,7 @@ const UpdateForm = () => {
           </div>
           <input
             type="text"
-            id="intersection"
+            id="location.intersection"
             value={updateMural.location.intersection}
             onChange={handleTextChange}
           />
