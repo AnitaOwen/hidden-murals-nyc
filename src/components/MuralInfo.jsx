@@ -13,13 +13,6 @@ const MuralInfo = ({ allMurals, getRemainingMurals }) => {
   const [mural, setMural] = useState(null)
   const [allComments, setAllComments] = useState([])
   const [commentInput, setCommentInput] = useState({ author: "", text: "" });
-  // const [notes, setNotes] = useState([])
-
-  
-  // useEffect(() => {
-  //   const matchingMural = allMurals.find((mural) => mural.id === parseInt(id));
-  //   setMural(matchingMural);
-  // }, [id, allMurals]);
 
   // useEffect to find mural
   useEffect(() => {
@@ -30,7 +23,7 @@ const MuralInfo = ({ allMurals, getRemainingMurals }) => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [id]);
 
   // USEEFFECT TO FIND COMMENTS
   useEffect(() => {
@@ -119,7 +112,6 @@ const MuralInfo = ({ allMurals, getRemainingMurals }) => {
                 <li className="list-item"><span className="key">Year:</span> {mural.year}</li>
                 <li className="list-item"><span className="key">Description:</span> {mural.description}</li>
               </ul>
-        
 
 
               {/* Update Form button */}
