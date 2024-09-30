@@ -9,7 +9,7 @@ Welcome to Hidden Murals NYC, an app designed to help users explore and contribu
 To set up and run the Hidden Murals NYC app on your local machine, follow these steps:
 
 1. **Backend API**: Utilize the [hidden-murals-server](https://github.com/AnitaOwen/hidden-murals-server).
-2. **Clone the Repository**: `fork` and `clone` the frontend repository to your local machine.
+2. **Clone the Repository**: `fork` and `clone` the [hidden-murals-nyc frontend repo](https://github.com/AnitaOwen/hidden-murals-nyc) to your local machine.
 
 ```
 git clone https://github.com/AnitaOwen/hidden-murals-nyc
